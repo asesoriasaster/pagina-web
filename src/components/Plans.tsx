@@ -1,119 +1,183 @@
 import { useState } from 'react';
-import { Check, X } from 'lucide-react';
+import { Check } from 'lucide-react';
+
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
-import { plans, type Plan } from '@/data/plans';
 import PlanModal from '@/components/PlanModal';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { plans, type Plan } from '@/data/plans';
 
 export default function Plans() {
   const [activePlan, setActivePlan] = useState<Plan | null>(null);
 
   return (
-    <section id="planes" className="py-24 sm:py-28 bg-white">
+    <section
+      id="planes"
+      className="bg-white py-24 sm:py-28"
+    >
       <Container>
-        <SectionHeading title="Elige el nivel de Aster que necesita tu negocio." />
+        <SectionHeading
+          title="Elige el nivel de Aster que necesita tu negocio."
+        />
 
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-16 items-stretch">
-          {plans.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 80} className="h-full">
-              <div
-                className={`h-full flex flex-col rounded-[26px] p-7 transition-all duration-300 ${
+        <div className="mt-16 grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {plans.map((plan, index) => (
+            <Reveal
+              key={plan.id}
+              delay={index * 80}
+              className="h-full"
+            >
+              <article
+                className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 ${
                   plan.featured
-                    ? 'bg-white border-2 border-aster-green shadow-pop xl:-translate-y-3'
-                    : 'bg-aster-soft border border-gray-200/70 shadow-card hover:shadow-cardHover'
+                    ? 'border-2 border-aster-green bg-gradient-to-b from-aster-greenSoft to-white shadow-[0_14px_34px_rgba(16,115,74,0.18)] xl:-translate-y-3'
+                    : 'border border-aster-green/15 bg-aster-greenSoft shadow-[0_8px_22px_rgba(16,115,74,0.07)] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(16,115,74,0.12)]'
                 }`}
               >
-                <div className="flex items-center gap-2 mb-4">
+                <div className="mb-4 flex min-h-[30px] flex-wrap items-center gap-2">
                   {plan.badge && (
-                    <span className="inline-block w-fit text-xs font-bold tracking-wide text-white uppercase bg-aster-green rounded-full px-3 py-1.5">
+                    <span className="inline-flex w-fit rounded-full bg-aster-green px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                       {plan.badge}
                     </span>
                   )}
+
                   {plan.highlight && (
-                    <span className="inline-block w-fit text-xs font-bold tracking-wide text-aster-green uppercase bg-aster-greenSoft rounded-full px-3 py-1.5">
+                    <span className="inline-flex w-fit rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-aster-green shadow-sm">
                       {plan.highlight}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-xl font-extrabold text-aster-black">{plan.name}</h3>
-                <p className="mt-1.5 text-[14px] text-aster-gray font-medium leading-snug">{plan.subtitle}</p>
+                <h3 className="text-xl font-extrabold text-aster-black">
+                  {plan.name}
+                </h3>
 
-                <div className="mt-6 pb-5 border-b border-gray-200/70">
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-3xl font-extrabold text-aster-black tracking-tight">{plan.pricePrimary}</span>
-                    {plan.priceUnit && (
-                      <span className="text-sm font-semibold text-aster-gray">{plan.priceUnit}</span>
+                <p className="mt-1.5 min-h-[62px] text-[14px] font-medium leading-relaxed text-aster-gray">
+                  {plan.subtitle}
+                </p>
+
+                {plan.priceMessage ? (
+                  <div className="mt-6 border-b border-aster-green/15 pb-5">
+                    <div className="flex min-h-[122px] items-center rounded-2xl border border-aster-green/15 bg-white/75 p-5">
+                      <p className="text-[15px] font-semibold leading-relaxed text-aster-black">
+                        {plan.priceMessage}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mt-6 min-h-[147px] border-b border-aster-green/15 pb-5">
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl font-extrabold tracking-tight text-aster-black">
+                        {plan.pricePrimary}
+                      </span>
+
+                      {plan.priceUnit && (
+                        <span className="text-sm font-semibold text-aster-gray">
+                          {plan.priceUnit}
+                        </span>
+                      )}
+                    </div>
+
+                    {plan.pricePrimaryLabel && (
+                      <p className="mt-1 text-xs font-semibold leading-relaxed text-aster-gray">
+                        {plan.pricePrimaryLabel}
+                      </p>
+                    )}
+
+                    {plan.discountBadge && (
+                      <p className="mt-3 inline-flex w-fit rounded-full bg-aster-green px-3 py-1.5 text-xs font-bold text-white">
+                        {plan.discountBadge}
+                      </p>
+                    )}
+
+                    {plan.priceSecondary && (
+                      <p className="mt-3 text-[12.5px] font-medium leading-relaxed text-aster-gray">
+                        {plan.priceSecondary}
+                      </p>
+                    )}
+
+                    {plan.priceSecondaryLabel && (
+                      <p className="text-[12px] font-medium leading-relaxed text-aster-gray/80">
+                        {plan.priceSecondaryLabel}
+                      </p>
+                    )}
+
+                    {plan.extra && (
+                      <p className="mt-2 text-[12px] font-medium leading-relaxed text-aster-gray/80">
+                        {plan.extra}
+                      </p>
                     )}
                   </div>
-                  <p className="text-xs font-semibold text-aster-gray mt-1">{plan.pricePrimaryLabel}</p>
+                )}
 
-                  {plan.discountBadge && (
-                    <p className="mt-3 inline-block w-fit text-xs font-bold text-white bg-aster-green rounded-full px-3 py-1.5">
-                      {plan.discountBadge}
-                    </p>
-                  )}
-
-                  {plan.priceSecondary && (
-                    <p className="mt-3 text-[12.5px] font-medium text-aster-gray leading-relaxed">{plan.priceSecondary}</p>
-                  )}
-                  {plan.priceSecondaryLabel && (
-                    <p className="text-[12px] font-medium text-aster-gray/80 leading-relaxed">{plan.priceSecondaryLabel}</p>
-                  )}
-
-                  {plan.extra && (
-                    <p className="mt-2 text-[12px] font-medium text-aster-gray/80 leading-relaxed">{plan.extra}</p>
-                  )}
-                </div>
-
-                <ul className="space-y-2.5 mt-5">
+                <ul className="mt-6 space-y-3">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <span className="flex items-center justify-center h-5 w-5 rounded-full bg-aster-greenSoft text-aster-green shrink-0 mt-0.5">
-                        <Check size={12} strokeWidth={3} />
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5"
+                    >
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
+                        <Check
+                          size={12}
+                          strokeWidth={3}
+                        />
                       </span>
-                      <span className="text-[13.5px] text-aster-black leading-snug">{feature}</span>
+
+                      <span className="text-[13.5px] leading-snug text-aster-black">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-auto pt-7 flex flex-col gap-2.5">
+                <div className="mt-auto flex flex-col gap-2.5 pt-8">
                   <a
-                    href="#contacto"
-                    className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-[14px] font-semibold transition-colors duration-200 ${
+                    href="https://wa.me/56983480052"
+                    className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-all duration-200 ${
                       plan.featured
-                        ? 'bg-aster-green text-white hover:bg-aster-greenDark'
+                        ? 'bg-aster-green text-white shadow-sm hover:bg-aster-greenDark hover:shadow-[0_10px_20px_rgba(16,115,74,0.18)]'
                         : 'bg-aster-black text-white hover:bg-black'
                     }`}
                   >
+                    <WhatsAppIcon size={17} />
                     Hablar con Aster
                   </a>
+
                   <button
+                    type="button"
                     onClick={() => setActivePlan(plan)}
-                    className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-[14px] font-semibold text-aster-black hover:border-aster-green hover:text-aster-green transition-colors duration-200"
+                    className="inline-flex items-center justify-center rounded-full border border-aster-green/25 bg-aster-greenSoft/80 px-5 py-3 text-[14px] font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-green hover:text-white hover:shadow-[0_7px_16px_rgba(16,115,74,0.14)]"
                   >
                     {plan.cta}
                   </button>
                 </div>
-              </div>
+              </article>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={200}>
-          <div className="mt-10 text-center max-w-2xl mx-auto">
-            <p className="text-sm text-aster-gray leading-relaxed">
+          <div className="mx-auto mt-10 max-w-2xl text-center">
+            <p className="text-sm leading-relaxed text-aster-gray">
               Todos los valores publicados incluyen IVA.
             </p>
-            <p className="mt-1 text-xs text-aster-gray/70 leading-relaxed">
-              Equipamiento, inventario inicial, configuraciones especiales o servicios fuera del alcance indicado pueden cotizarse según las necesidades de cada negocio.
+
+            <p className="mt-1 text-xs leading-relaxed text-aster-gray/70">
+              Equipamiento, inventario inicial, configuraciones especiales o
+              servicios fuera del alcance indicado pueden cotizarse según las
+              necesidades de cada negocio.
             </p>
           </div>
         </Reveal>
       </Container>
 
-      {activePlan && <PlanModal plan={activePlan} onClose={() => setActivePlan(null)} />}
+      {activePlan && (
+        <PlanModal
+          plan={activePlan}
+          onClose={() => setActivePlan(null)}
+        />
+      )}
     </section>
   );
 }
