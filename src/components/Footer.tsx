@@ -36,7 +36,7 @@ export default function Footer() {
               <img
                 src="/assets/images/ASTER_LOGO.jpeg"
                 alt="Logo ASTER"
-                className="mb-4 h-12 w-auto object-contain"
+                className="mb-4 h-12 w-auto object-contain" loading="lazy" decoding="async"
               />
             </a>
 

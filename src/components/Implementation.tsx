@@ -18,7 +18,7 @@ export default function Implementation() {
               src="/assets/images/8.jpg"
               alt="Persona gestionando su negocio con calma desde una tablet en una cafetería"
               className="block w-full aspect-[16/8] object-cover object-center"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
         </Reveal>
