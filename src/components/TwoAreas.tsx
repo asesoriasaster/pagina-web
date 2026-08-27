@@ -15,7 +15,7 @@ export default function TwoAreas() {
 
         <Reveal delay={80}>
           <EditorialImage
-            src="/assets/images/4.png"
+            src="/assets/images/4.jpg"
             alt="Propietario tranquilo mientras su negocio continúa funcionando"
             title={<>Que el negocio funcione no debería depender de que estés mirando todo.</>}
             subtitle={<>Información clara. <strong>Más confianza para delegar.</strong></>}

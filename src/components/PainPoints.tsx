@@ -25,7 +25,7 @@ export default function PainPoints() {
 
         <Reveal delay={80}>
           <EditorialImage
-            src="/assets/images/2.png"
+            src="/assets/images/2.jpg"
             alt="Dueña de negocio mostrando ASTER App en su celular"
             title={<>Tu negocio, <strong>bajo control.</strong></>}
             subtitle={<>Ventas, inventario, caja y alertas. La información que necesitas, <strong>siempre a tu alcance.</strong></>}

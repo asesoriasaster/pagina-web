@@ -15,7 +15,7 @@ export default function Implementation() {
         <Reveal delay={80}>
           <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-100 bg-white shadow-card">
             <img
-              src="/assets/images/8.png"
+              src="/assets/images/8.jpg"
               alt="Persona gestionando su negocio con calma desde una tablet en una cafetería"
               className="block w-full aspect-[16/8] object-cover object-center"
               loading="lazy"

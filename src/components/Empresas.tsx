@@ -40,7 +40,7 @@ export default function Empresas() {
 
         <Reveal delay={80}>
           <EditorialImage
-            src="/assets/images/6.png"
+            src="/assets/images/6.jpg"
             alt="Profesional de operaciones tomando decisiones con información clara"
             title={<>No tomes decisiones importantes con información incompleta.</>}
             subtitle={<><strong>Más claridad para decidir.</strong> Más control para avanzar.</>}
