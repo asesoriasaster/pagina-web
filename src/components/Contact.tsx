@@ -1,7 +1,22 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
-import { CheckCircle2, MessageCircle, Send } from 'lucide-react';
+import {
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from 'react';
+import {
+  CheckCircle2,
+  MessageCircle,
+  Phone,
+  Send,
+} from 'lucide-react';
+
 import Container from '@/components/Container';
 import Reveal from '@/components/Reveal';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+
+const phoneDisplay = '+56 9 8348 0052';
+const phoneHref = 'tel:+56983480052';
+const whatsappBaseUrl = 'https://wa.me/56983480052';
 
 const businessTypes = [
   'Almacén / Minimarket',
@@ -53,33 +68,70 @@ export default function Contact() {
 
     if (!form.correo.trim()) {
       nextErrors.correo = 'Ingresa tu correo';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)) {
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)
+    ) {
       nextErrors.correo = 'Ingresa un correo válido';
     }
 
     if (!form.telefono.trim()) {
-      nextErrors.telefono = 'Ingresa tu teléfono o WhatsApp';
+      nextErrors.telefono =
+        'Ingresa tu teléfono o WhatsApp';
     }
 
     if (!form.mejorar.trim()) {
-      nextErrors.mejorar = 'Cuéntanos qué necesitas mejorar';
+      nextErrors.mejorar =
+        'Cuéntanos qué necesitas mejorar';
     }
 
     return nextErrors;
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
 
     const nextErrors = validate();
     setErrors(nextErrors);
 
-    if (Object.keys(nextErrors).length === 0) {
-      setSubmitted(true);
+    if (Object.keys(nextErrors).length > 0) {
+      return;
     }
+
+    const message = [
+      'Hola ASTER, completé el formulario de contacto de la página web.',
+      '',
+      `Nombre: ${form.nombre.trim()}`,
+      `Empresa o negocio: ${form.empresa.trim()}`,
+      `Tipo de negocio: ${
+        form.tipoNegocio.trim() || 'No indicado'
+      }`,
+      `Correo: ${form.correo.trim()}`,
+      `Teléfono / WhatsApp: ${form.telefono.trim()}`,
+      `Necesito mejorar: ${form.mejorar.trim()}`,
+      `Mensaje adicional: ${
+        form.mensaje.trim() || 'Sin información adicional'
+      }`,
+    ].join('\n');
+
+    const whatsappUrl = `${whatsappBaseUrl}?text=${encodeURIComponent(
+      message,
+    )}`;
+
+    window.open(
+      whatsappUrl,
+      '_blank',
+      'noopener,noreferrer',
+    );
+
+    setSubmitted(true);
   };
 
-  const update = (key: keyof FormState, value: string) => {
+  const update = (
+    key: keyof FormState,
+    value: string,
+  ) => {
     setForm((previous) => ({
       ...previous,
       [key]: value,
@@ -114,28 +166,83 @@ export default function Contact() {
               </span>
 
               <h2 className="mt-6 text-3xl font-extrabold leading-[1.15] tracking-tight text-aster-black sm:text-4xl">
-                ¿Cuánto sabes realmente de lo que ocurre en tu negocio?
+                ¿Cuánto sabes realmente de lo que ocurre
+                en tu negocio?
               </h2>
 
               <p className="mt-5 text-base leading-relaxed text-aster-gray sm:text-lg">
-                Cuéntanos cómo funciona actualmente tu negocio y qué te
-                gustaría mejorar.
+                Cuéntanos cómo funciona actualmente tu
+                negocio y qué te gustaría mejorar.
               </p>
 
               <p className="mt-4 text-[15px] leading-relaxed text-aster-gray">
-                Con esa información podremos entender mejor tu realidad y
-                orientarte hacia la solución de Aster que tenga más sentido
-                para ti.
+                Con esa información podremos entender mejor
+                tu realidad y orientarte hacia la solución
+                de Aster que tenga más sentido para ti.
               </p>
 
-              <div className="mt-8 rounded-2xl border border-aster-green/10 bg-aster-soft p-6">
+              <div className="mt-8 rounded-[22px] border border-aster-green/15 bg-aster-greenSoft p-6">
+                <p className="text-sm font-bold text-aster-black">
+                  Contacto directo
+                </p>
+
+                <p className="mt-2 text-sm leading-relaxed text-aster-gray">
+                  También puedes comunicarte directamente
+                  con nosotros por teléfono o WhatsApp
+                  Business.
+                </p>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <a
+                    href={phoneHref}
+                    className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-aster-greenSoft text-aster-green">
+                      <Phone size={18} />
+                    </span>
+
+                    <span className="min-w-0">
+                      <span className="block text-xs font-medium text-aster-gray">
+                        Teléfono
+                      </span>
+
+                      <span className="block whitespace-nowrap text-sm font-semibold text-aster-black transition-colors group-hover:text-aster-green">
+                        {phoneDisplay}
+                      </span>
+                    </span>
+                  </a>
+
+                  <a
+                    href={whatsappBaseUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-aster-green text-white">
+                      <WhatsAppIcon size={18} />
+                    </span>
+
+                    <span className="min-w-0">
+                      <span className="block text-xs font-medium text-aster-gray">
+                        WhatsApp Business
+                      </span>
+
+                      <span className="block whitespace-nowrap text-sm font-semibold text-aster-black transition-colors group-hover:text-aster-green">
+                        {phoneDisplay}
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-gray-200/70 bg-aster-soft p-6">
                 <p className="text-sm font-bold text-aster-black">
                   Sin compromisos.
                 </p>
 
                 <p className="mt-2 text-sm leading-relaxed text-aster-gray">
-                  Primero entendemos tu negocio. Después evaluamos cómo podemos
-                  ayudarte.
+                  Primero entendemos tu negocio. Después
+                  evaluamos cómo podemos ayudarte.
                 </p>
               </div>
             </div>
@@ -143,48 +250,70 @@ export default function Contact() {
 
           <Reveal delay={150}>
             {submitted ? (
-              <div className="rounded-[26px] border border-aster-green/20 bg-aster-greenSoft p-10 text-center">
+              <div className="rounded-[26px] border border-aster-green/20 bg-aster-greenSoft p-8 text-center sm:p-10">
                 <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-aster-green text-white">
                   <CheckCircle2 size={28} />
                 </span>
 
                 <h3 className="text-xl font-extrabold text-aster-black">
-                  ¡Formulario completado!
+                  Tu solicitud está preparada
                 </h3>
 
                 <p className="mt-3 text-[15px] leading-relaxed text-aster-gray">
-                  Los datos fueron validados correctamente.
+                  Abrimos WhatsApp con los datos que
+                  completaste en el formulario.
                 </p>
 
                 <p className="mt-2 text-sm leading-relaxed text-aster-gray">
-                  El canal de recepción definitivo se conectará cuando
-                  habilitemos la integración de contacto de la página.
+                  Revisa el mensaje y presiona enviar en
+                  WhatsApp para que podamos recibir tu
+                  solicitud.
                 </p>
 
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  className="mt-7 inline-flex items-center justify-center rounded-full border border-aster-green bg-white px-6 py-3 text-sm font-semibold text-aster-green transition-colors hover:bg-aster-green hover:text-white"
-                >
-                  Completar nuevamente
-                </button>
+                <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                  <a
+                    href={whatsappBaseUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-aster-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-aster-greenDark"
+                  >
+                    <WhatsAppIcon size={17} />
+                    Abrir WhatsApp
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={resetForm}
+                    className="inline-flex items-center justify-center rounded-full border border-aster-green bg-white px-6 py-3 text-sm font-semibold text-aster-green transition-colors hover:bg-aster-green hover:text-white"
+                  >
+                    Completar nuevamente
+                  </button>
+                </div>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-[26px] border border-gray-200/70 bg-aster-soft p-8 shadow-card"
+                className="rounded-[26px] border border-gray-200/70 bg-aster-soft p-6 shadow-card sm:p-8"
                 noValidate
               >
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Nombre" error={errors.nombre}>
+                  <Field
+                    label="Nombre"
+                    error={errors.nombre}
+                  >
                     <input
                       type="text"
                       autoComplete="name"
                       value={form.nombre}
                       onChange={(event) =>
-                        update('nombre', event.target.value)
+                        update(
+                          'nombre',
+                          event.target.value,
+                        )
                       }
-                      className={inputCls(errors.nombre)}
+                      className={inputCls(
+                        errors.nombre,
+                      )}
                       placeholder="Tu nombre"
                     />
                   </Field>
@@ -198,9 +327,14 @@ export default function Contact() {
                       autoComplete="organization"
                       value={form.empresa}
                       onChange={(event) =>
-                        update('empresa', event.target.value)
+                        update(
+                          'empresa',
+                          event.target.value,
+                        )
                       }
-                      className={inputCls(errors.empresa)}
+                      className={inputCls(
+                        errors.empresa,
+                      )}
                       placeholder="Nombre de tu negocio"
                     />
                   </Field>
@@ -211,14 +345,22 @@ export default function Contact() {
                     <select
                       value={form.tipoNegocio}
                       onChange={(event) =>
-                        update('tipoNegocio', event.target.value)
+                        update(
+                          'tipoNegocio',
+                          event.target.value,
+                        )
                       }
                       className={inputCls()}
                     >
-                      <option value="">Selecciona una opción</option>
+                      <option value="">
+                        Selecciona una opción
+                      </option>
 
                       {businessTypes.map((type) => (
-                        <option key={type} value={type}>
+                        <option
+                          key={type}
+                          value={type}
+                        >
                           {type}
                         </option>
                       ))}
@@ -227,15 +369,23 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  <Field label="Correo" error={errors.correo}>
+                  <Field
+                    label="Correo"
+                    error={errors.correo}
+                  >
                     <input
                       type="email"
                       autoComplete="email"
                       value={form.correo}
                       onChange={(event) =>
-                        update('correo', event.target.value)
+                        update(
+                          'correo',
+                          event.target.value,
+                        )
                       }
-                      className={inputCls(errors.correo)}
+                      className={inputCls(
+                        errors.correo,
+                      )}
                       placeholder="correo@ejemplo.cl"
                     />
                   </Field>
@@ -249,9 +399,14 @@ export default function Contact() {
                       autoComplete="tel"
                       value={form.telefono}
                       onChange={(event) =>
-                        update('telefono', event.target.value)
+                        update(
+                          'telefono',
+                          event.target.value,
+                        )
                       }
-                      className={inputCls(errors.telefono)}
+                      className={inputCls(
+                        errors.telefono,
+                      )}
                       placeholder="+56 9..."
                     />
                   </Field>
@@ -266,9 +421,14 @@ export default function Contact() {
                       type="text"
                       value={form.mejorar}
                       onChange={(event) =>
-                        update('mejorar', event.target.value)
+                        update(
+                          'mejorar',
+                          event.target.value,
+                        )
                       }
-                      className={inputCls(errors.mejorar)}
+                      className={inputCls(
+                        errors.mejorar,
+                      )}
                       placeholder="Ventas, inventario, clientes, control..."
                     />
                   </Field>
@@ -280,7 +440,10 @@ export default function Contact() {
                       rows={4}
                       value={form.mensaje}
                       onChange={(event) =>
-                        update('mensaje', event.target.value)
+                        update(
+                          'mensaje',
+                          event.target.value,
+                        )
                       }
                       className={`${inputCls()} resize-none`}
                       placeholder="Puedes contarnos brevemente qué ocurre hoy en tu negocio."
@@ -293,12 +456,13 @@ export default function Contact() {
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-aster-green px-6 py-3.5 text-base font-semibold text-white transition-colors duration-200 hover:bg-aster-greenDark"
                 >
                   <Send size={18} />
-                  Enviar solicitud
+                  Continuar por WhatsApp
                 </button>
 
                 <p className="mt-4 text-center text-xs leading-relaxed text-aster-gray">
-                  Utilizaremos esta información únicamente para responder tu
-                  solicitud de contacto.
+                  Al continuar, abriremos WhatsApp con la
+                  información del formulario preparada para
+                  que tú decidas enviarla.
                 </p>
               </form>
             )}
