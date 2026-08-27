@@ -13,13 +13,13 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40"
+      className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-40"
     >
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-aster-greenSoft/60 via-white to-white" />
 
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(440px,0.95fr)] lg:gap-8">
-          {/* Texto */}
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(460px,0.95fr)] lg:gap-8">
+          {/* Texto principal */}
           <div className="animate-fadeUp">
             <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-aster-greenSoft px-4 py-1.5 text-sm font-semibold text-aster-green">
               Asesoría 360 para negocios y empresas
@@ -56,27 +56,19 @@ export default function Hero() {
                 Hablar con Aster
               </a>
             </div>
-
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-aster-green">
-              <CheckCircle2
-                size={16}
-                className="shrink-0"
-              />
-              Sitio actualizado automáticamente
-            </span>
           </div>
 
-          {/* Mockup */}
-          <div className="relative flex min-h-[570px] items-center justify-center sm:min-h-[630px] lg:min-h-[670px]">
-            <div className="relative mx-auto w-full max-w-[500px]">
+          {/* Mockup Aster App */}
+          <div className="relative flex min-h-[500px] items-center justify-center sm:min-h-[560px] lg:min-h-[590px]">
+            <div className="relative mx-auto w-full max-w-[540px]">
               <PhoneMockup />
 
-              {/* Tarjetas superiores */}
+              {/* Escritorio / tablet */}
               <FloatingCard
                 icon={<TrendingUp size={16} />}
                 label="Ventas +8,4%"
                 tone="green"
-                className="left-0 top-16 hidden sm:flex lg:left-1"
+                className="-left-4 top-28 hidden sm:flex lg:left-0"
                 delay="0s"
               />
 
@@ -84,33 +76,24 @@ export default function Hero() {
                 icon={<AlertTriangle size={16} />}
                 label="Stock crítico"
                 tone="red"
-                className="right-0 top-40 hidden sm:flex lg:right-1"
+                className="-right-10 top-52 hidden sm:flex lg:-right-6"
                 delay="1.2s"
-              />
-
-              {/* Tarjetas inferiores */}
-              <FloatingCard
-                icon={<AlertTriangle size={16} />}
-                label="3 productos por vencer"
-                tone="red"
-                className="bottom-44 left-0 hidden sm:flex lg:left-1"
-                delay="2s"
               />
 
               <FloatingCard
                 icon={<CheckCircle2 size={16} />}
                 label="Meta diaria alcanzada"
                 tone="green"
-                className="bottom-16 right-0 hidden sm:flex lg:right-1"
+                className="-right-8 bottom-24 hidden sm:flex lg:-right-4"
                 delay="0.6s"
               />
 
-              {/* Tarjetas compactas para móvil */}
+              {/* Móvil */}
               <FloatingCard
                 icon={<TrendingUp size={15} />}
                 label="Ventas +8,4%"
                 tone="green"
-                className="-left-2 top-20 flex scale-90 sm:hidden"
+                className="-left-3 top-28 flex scale-[0.82] sm:hidden"
                 delay="0s"
               />
 
@@ -118,7 +101,7 @@ export default function Hero() {
                 icon={<CheckCircle2 size={15} />}
                 label="Meta alcanzada"
                 tone="green"
-                className="-right-2 bottom-20 flex scale-90 sm:hidden"
+                className="-right-3 bottom-20 flex scale-[0.82] sm:hidden"
                 delay="0.8s"
               />
             </div>

@@ -133,31 +133,36 @@ export default function Footer() {
 
         {/* Contacto */}
         <div className="mb-8 rounded-[22px] border border-aster-green/15 bg-aster-greenSoft px-6 py-5 sm:px-8">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            {/* Texto */}
+            <div className="lg:max-w-[42%]">
               <p className="text-sm font-bold uppercase tracking-wide text-aster-green">
                 Contacto Aster
               </p>
 
-              <p className="mt-1 text-sm text-aster-gray">
+              <p className="mt-1 text-sm leading-relaxed text-aster-gray">
                 Estamos disponibles para conversar sobre tu negocio.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            {/* Canales */}
+            <div className="grid gap-3 sm:grid-cols-2 lg:flex lg:items-center lg:gap-7">
               <a
                 href={phoneHref}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-aster-black transition-colors hover:text-aster-green"
+                className="group flex min-w-0 items-center gap-3 rounded-2xl bg-white/65 px-3 py-2.5 transition-all duration-200 hover:bg-white lg:bg-transparent lg:px-0 lg:py-0"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
                   <Phone size={17} />
                 </span>
 
-                <span>
+                <span className="min-w-0">
                   <span className="block text-xs font-medium text-aster-gray">
                     Teléfono
                   </span>
-                  {phoneDisplay}
+
+                  <span className="block whitespace-nowrap text-sm font-semibold text-aster-black transition-colors group-hover:text-aster-green">
+                    {phoneDisplay}
+                  </span>
                 </span>
               </a>
 
@@ -165,17 +170,20 @@ export default function Footer() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-aster-black transition-colors hover:text-aster-green"
+                className="group flex min-w-0 items-center gap-3 rounded-2xl bg-white/65 px-3 py-2.5 transition-all duration-200 hover:bg-white lg:bg-transparent lg:px-0 lg:py-0"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-aster-green text-white shadow-sm">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-aster-green text-white shadow-sm">
                   <WhatsAppIcon size={17} />
                 </span>
 
-                <span>
+                <span className="min-w-0">
                   <span className="block text-xs font-medium text-aster-gray">
                     WhatsApp Business
                   </span>
-                  {phoneDisplay}
+
+                  <span className="block whitespace-nowrap text-sm font-semibold text-aster-black transition-colors group-hover:text-aster-green">
+                    {phoneDisplay}
+                  </span>
                 </span>
               </a>
             </div>

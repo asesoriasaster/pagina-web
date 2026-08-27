@@ -31,7 +31,7 @@ export default function Plans() {
               <article
                 className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 ${
                   plan.featured
-                    ? 'border-2 border-aster-green bg-gradient-to-b from-aster-greenSoft to-white shadow-[0_14px_34px_rgba(16,115,74,0.18)] xl:-translate-y-3'
+                    ? 'border-2 border-aster-green bg-gradient-to-b from-aster-green/20 via-aster-greenSoft to-white shadow-[0_14px_34px_rgba(16,115,74,0.18)] xl:-translate-y-3'
                     : 'border border-aster-green/15 bg-aster-greenSoft shadow-[0_8px_22px_rgba(16,115,74,0.07)] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(16,115,74,0.12)]'
                 }`}
               >

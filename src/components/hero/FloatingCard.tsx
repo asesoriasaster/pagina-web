@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface FloatingCardProps {
   icon: ReactNode;
@@ -8,22 +8,33 @@ interface FloatingCardProps {
   delay?: string;
 }
 
-const toneStyles: Record<string, string> = {
+const toneStyles = {
   green: 'text-aster-green bg-aster-greenSoft',
   red: 'text-aster-red bg-red-50',
   black: 'text-aster-black bg-aster-soft',
 };
 
-export default function FloatingCard({ icon, label, tone = 'black', className = '', delay = '0s' }: FloatingCardProps) {
+export default function FloatingCard({
+  icon,
+  label,
+  tone = 'black',
+  className = '',
+  delay = '0s',
+}: FloatingCardProps) {
   return (
     <div
-      className={`hidden md:flex items-center gap-2.5 rounded-2xl bg-white shadow-cardHover px-4 py-3 absolute animate-floaty ${className}`}
+      className={`absolute items-center gap-2 rounded-2xl border border-white/80 bg-white/95 px-3.5 py-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.10)] backdrop-blur-sm animate-floaty ${className}`}
       style={{ animationDelay: delay }}
     >
-      <span className={`flex items-center justify-center h-8 w-8 rounded-full shrink-0 ${toneStyles[tone]}`}>
+      <span
+        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${toneStyles[tone]}`}
+      >
         {icon}
       </span>
-      <span className="text-sm font-semibold text-aster-black whitespace-nowrap">{label}</span>
+
+      <span className="whitespace-nowrap text-[13px] font-semibold text-aster-black">
+        {label}
+      </span>
     </div>
   );
 }

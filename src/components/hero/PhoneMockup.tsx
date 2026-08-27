@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -19,29 +20,31 @@ export default function PhoneMockup() {
             }
 
             50% {
-              transform: translateY(-7px);
-            }
-          }
-
-          @keyframes asterDashboardBreath {
-            0%, 100% {
-              transform: scale(0.985);
-            }
-
-            50% {
-              transform: scale(1);
+              transform: translateY(-6px);
             }
           }
 
           @keyframes asterPhoneGlow {
             0%, 100% {
-              opacity: 0.35;
-              transform: scale(0.96);
+              opacity: 0.30;
+              transform: scale(0.97);
             }
 
             50% {
-              opacity: 0.58;
-              transform: scale(1.03);
+              opacity: 0.48;
+              transform: scale(1.02);
+            }
+          }
+
+          @keyframes asterDashboardEnter {
+            from {
+              opacity: 0;
+              transform: translateY(8px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
             }
           }
 
@@ -49,19 +52,18 @@ export default function PhoneMockup() {
             animation: asterPhoneFloat 6s ease-in-out infinite;
           }
 
-          .aster-dashboard-breath {
-            animation: asterDashboardBreath 8s ease-in-out infinite;
-            transform-origin: center top;
-          }
-
           .aster-phone-glow {
             animation: asterPhoneGlow 6s ease-in-out infinite;
           }
 
+          .aster-dashboard-enter {
+            animation: asterDashboardEnter 0.8s ease-out both;
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .aster-phone-float,
-            .aster-dashboard-breath,
-            .aster-phone-glow {
+            .aster-phone-glow,
+            .aster-dashboard-enter {
               animation: none;
             }
           }
@@ -69,51 +71,69 @@ export default function PhoneMockup() {
       </style>
 
       <div className="relative mx-auto w-[225px] sm:w-[245px] lg:w-[270px]">
+        {/* Resplandor verde ASTER */}
         <div className="aster-phone-glow absolute -inset-10 rounded-[70px] bg-aster-green/15 blur-3xl" />
 
-        <div className="absolute -bottom-8 left-1/2 h-16 w-[78%] -translate-x-1/2 rounded-full bg-black/20 blur-2xl" />
+        {/* Sombra inferior */}
+        <div className="absolute -bottom-7 left-1/2 h-14 w-[76%] -translate-x-1/2 rounded-full bg-black/20 blur-2xl" />
 
+        {/* Perspectiva */}
         <div
           className="relative"
           style={{
-            transform: 'perspective(1100px) rotateY(-4deg) rotateZ(1.2deg)',
+            transform:
+              'perspective(1100px) rotateY(-4deg) rotateZ(1.2deg)',
             transformOrigin: 'center center',
           }}
         >
           <div className="aster-phone-float">
-            <div className="relative rounded-[44px] bg-[#090909] p-[7px] shadow-[0_35px_80px_rgba(0,0,0,0.26),0_15px_35px_rgba(16,115,74,0.12)]">
+            {/* Cuerpo del teléfono */}
+            <div className="relative rounded-[44px] bg-[#090909] p-[7px] shadow-[0_32px_70px_rgba(0,0,0,0.25),0_14px_32px_rgba(16,115,74,0.10)]">
+              {/* Botones laterales */}
               <div className="absolute -left-[3px] top-[105px] h-11 w-[3px] rounded-l-md bg-[#2b2b2b]" />
+
               <div className="absolute -left-[3px] top-[160px] h-16 w-[3px] rounded-l-md bg-[#2b2b2b]" />
+
               <div className="absolute -right-[3px] top-[145px] h-20 w-[3px] rounded-r-md bg-[#2b2b2b]" />
 
-              <div className="relative aspect-[768/1664] overflow-hidden rounded-[38px] bg-[#f3f8f4]">
+              {/* Pantalla */}
+              <div className="relative aspect-[768/1664] overflow-hidden rounded-[38px] bg-[#f4f8f5]">
+                {/* Imagen real de Aster como apoyo */}
                 <img
                   src="/assets/images/dashboard.jpeg"
-                  alt="Dashboard de Aster App"
-                  className="absolute inset-0 h-full w-full object-cover object-top opacity-[0.16]"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-top opacity-[0.08]"
                 />
 
-                <div className="aster-dashboard-breath absolute inset-0 z-10 px-3 pb-3 pt-4">
-                  <div className="rounded-[20px] border border-white/70 bg-white/90 px-3 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+                {/* Dashboard demostrativo */}
+                <div className="aster-dashboard-enter absolute inset-0 z-10 px-3 pb-3 pt-4">
+                  {/* Cabecera */}
+                  <div className="rounded-[20px] border border-white/80 bg-white/95 px-3 py-2.5 shadow-[0_8px_22px_rgba(0,0,0,0.07)]">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-aster-green">
                           Dashboard global
                         </p>
+
                         <h3 className="mt-1 text-[16px] font-extrabold leading-tight text-aster-black">
                           Resumen del negocio
                         </h3>
+
                         <p className="mt-1 text-[9px] leading-relaxed text-aster-gray">
-                          Vista consolidada de ventas, inventario y operación.
+                          Ventas, inventario y operación en una sola vista.
                         </p>
                       </div>
 
-                      <div className="rounded-full bg-aster-greenSoft px-2 py-1 text-[8px] font-bold text-aster-green">
-                        En vivo
+                      <div className="shrink-0 rounded-full bg-aster-greenSoft px-2 py-1 text-center text-[7.5px] font-bold leading-tight text-aster-green">
+                        Datos
+                        <br />
+                        demo
                       </div>
                     </div>
                   </div>
 
+                  {/* Métricas */}
                   <div className="mt-2.5 grid grid-cols-2 gap-2">
                     <MetricCard
                       icon={<ArrowUpRight size={12} />}
@@ -125,17 +145,18 @@ export default function PhoneMockup() {
 
                     <MetricCard
                       icon={<CalendarDays size={12} />}
-                      title="Ventas mes"
+                      title="Ventas del mes"
                       value="$4.280.900"
-                      detail="Meta: 78%"
+                      detail="Meta mensual: 78%"
                       tone="green"
+                      compactValue
                     />
 
                     <MetricCard
                       icon={<ShoppingCart size={12} />}
-                      title="Transacciones"
+                      title="Transacciones mes"
                       value="37"
-                      detail="12 en proceso"
+                      detail="Ventas confirmadas"
                       tone="neutral"
                     />
 
@@ -143,25 +164,27 @@ export default function PhoneMockup() {
                       icon={<Wallet size={12} />}
                       title="Ticket promedio"
                       value="$115.700"
-                      detail="Buen rendimiento"
+                      detail="Promedio mensual"
                       tone="neutral"
                     />
                   </div>
 
-                  <div className="mt-2.5 rounded-[20px] border border-white/70 bg-white/92 p-2.5 shadow-[0_10px_24px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+                  {/* Alertas */}
+                  <div className="mt-2.5 rounded-[20px] border border-white/80 bg-white/95 p-2.5 shadow-[0_8px_22px_rgba(0,0,0,0.07)]">
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <p className="text-[10px] font-bold text-aster-black">
                           Alertas activas
                         </p>
+
                         <p className="mt-0.5 text-[9px] text-aster-gray">
-                          Revisión rápida del estado
+                          Revisión rápida de la operación
                         </p>
                       </div>
 
-                      <div className="rounded-full bg-red-50 px-2 py-1 text-[8px] font-bold text-red-500">
+                      <span className="shrink-0 rounded-full bg-red-50 px-2 py-1 text-[8px] font-bold text-red-500">
                         2 críticas
-                      </div>
+                      </span>
                     </div>
 
                     <div className="mt-2.5 space-y-2">
@@ -174,19 +197,21 @@ export default function PhoneMockup() {
 
                       <AlertRow
                         icon={<Package size={11} />}
-                        label="Por vencer"
+                        label="Productos por vencer"
                         value="3 unid."
                         tone="amber"
                       />
                     </div>
                   </div>
 
-                  <div className="mt-2.5 rounded-[20px] border border-white/70 bg-white/92 p-2.5 shadow-[0_10px_24px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+                  {/* Métodos de pago */}
+                  <div className="mt-2.5 rounded-[20px] border border-white/80 bg-white/95 p-2.5 shadow-[0_8px_22px_rgba(0,0,0,0.07)]">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[10px] font-bold text-aster-black">
                           Métodos de pago
                         </p>
+
                         <p className="mt-0.5 text-[9px] text-aster-gray">
                           Distribución del día
                         </p>
@@ -219,8 +244,8 @@ export default function PhoneMockup() {
                   </div>
                 </div>
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/[0.025]" />
-                <div className="pointer-events-none absolute left-[12%] top-0 h-[1px] w-[55%] bg-white/40" />
+                {/* Reflejo */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-black/[0.02]" />
               </div>
             </div>
           </div>
@@ -236,37 +261,45 @@ function MetricCard({
   value,
   detail,
   tone = 'neutral',
+  compactValue = false,
 }: {
   icon: ReactNode;
   title: string;
   value: string;
   detail: string;
   tone?: 'green' | 'neutral';
+  compactValue?: boolean;
 }) {
-  const iconWrapClass =
+  const iconClass =
     tone === 'green'
       ? 'bg-aster-greenSoft text-aster-green'
       : 'bg-slate-100 text-slate-600';
 
   return (
-    <div className="rounded-[18px] border border-white/70 bg-white/92 p-2.5 shadow-[0_10px_24px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+    <div className="min-w-0 rounded-[18px] border border-white/80 bg-white/95 p-2.5 shadow-[0_8px_20px_rgba(0,0,0,0.065)]">
       <div className="flex items-center gap-2">
-        <div
-          className={`flex h-6 w-6 items-center justify-center rounded-full ${iconWrapClass}`}
+        <span
+          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${iconClass}`}
         >
           {icon}
-        </div>
+        </span>
 
-        <p className="text-[9px] font-semibold leading-tight text-aster-gray">
+        <p className="min-w-0 text-[9px] font-semibold leading-tight text-aster-gray">
           {title}
         </p>
       </div>
 
-      <p className="mt-2 text-[15px] font-extrabold leading-none text-aster-black">
+      <p
+        className={`mt-2 whitespace-nowrap font-extrabold leading-none text-aster-black ${
+          compactValue
+            ? 'text-[13px] tracking-[-0.03em]'
+            : 'text-[15px]'
+        }`}
+      >
         {value}
       </p>
 
-      <p className="mt-1 text-[9px] font-medium text-aster-gray">
+      <p className="mt-1 text-[8.5px] font-medium leading-tight text-aster-gray">
         {detail}
       </p>
     </div>
@@ -277,12 +310,12 @@ function AlertRow({
   icon,
   label,
   value,
-  tone = 'red',
+  tone,
 }: {
   icon: ReactNode;
   label: string;
   value: string;
-  tone?: 'red' | 'amber';
+  tone: 'red' | 'amber';
 }) {
   const toneClass =
     tone === 'red'
@@ -290,20 +323,20 @@ function AlertRow({
       : 'bg-amber-50 text-amber-500';
 
   return (
-    <div className="flex items-center justify-between rounded-[14px] bg-slate-50/90 px-2.5 py-2">
-      <div className="flex items-center gap-2">
-        <div
-          className={`flex h-5 w-5 items-center justify-center rounded-full ${toneClass}`}
+    <div className="flex items-center justify-between gap-1.5 rounded-[14px] bg-slate-50/95 px-2 py-2">
+      <div className="flex min-w-0 flex-1 items-center gap-1.5">
+        <span
+          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${toneClass}`}
         >
           {icon}
-        </div>
+        </span>
 
-        <span className="text-[9px] font-semibold text-aster-black">
+        <span className="whitespace-nowrap text-[8px] font-semibold leading-tight text-aster-black">
           {label}
         </span>
       </div>
 
-      <span className="text-[9px] font-bold text-aster-gray">
+      <span className="shrink-0 whitespace-nowrap text-[8.5px] font-bold text-aster-gray">
         {value}
       </span>
     </div>
@@ -331,7 +364,7 @@ function PaymentRow({
         </span>
       </div>
 
-      <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+      <div className="h-1.5 overflow-hidden rounded-full bg-slate-100">
         <div
           className="h-full rounded-full bg-aster-green"
           style={{ width }}
