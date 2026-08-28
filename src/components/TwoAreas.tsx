@@ -1,110 +1,173 @@
-import { AlertTriangle, BarChart3, Boxes, ScanBarcode, TrendingUp, Users } from 'lucide-react';
+import {
+  BarChart3,
+  Boxes,
+  BriefcaseBusiness,
+  Store,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
+
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
-import EditorialImage from '@/components/EditorialImage';
 
 export default function TwoAreas() {
   return (
-    <section className="py-24 sm:py-28 bg-white">
+    <section className="bg-white py-20 sm:py-24">
       <Container>
         <SectionHeading
           title="Dos realidades. Un mismo objetivo: tomar mejores decisiones."
-          subtitle="Aster adapta sus soluciones a la realidad de cada operación."
+          subtitle="ASTER adapta tecnología, gestión y asesoría al tamaño y complejidad de cada operación."
         />
 
         <Reveal delay={80}>
-          <EditorialImage
-            src="/assets/images/4.jpg"
-            alt="Propietario tranquilo mientras su negocio continúa funcionando"
-            title={<>Que el negocio funcione no debería depender de que estés mirando todo.</>}
-            subtitle={<>Información clara. <strong>Más confianza para delegar.</strong></>}
-          />
+          <div
+            className="relative mt-12 overflow-hidden rounded-[32px] bg-cover bg-center shadow-cardHover"
+            style={{
+              backgroundImage:
+                "url('/assets/images/4.jpg')",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/10" />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+
+            <div className="relative grid min-h-[580px] lg:grid-cols-2">
+              <div className="flex items-end border-b border-white/25 p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+                <div className="w-full max-w-xl rounded-[28px] border border-white/35 bg-black/10 p-7 text-white shadow-xl sm:p-9">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
+                      <Store size={21} />
+                    </span>
+
+                    <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-white">
+                      ASTER para Pymes
+                    </span>
+                  </div>
+
+                  <h3 className="text-3xl font-extrabold leading-tight drop-shadow-md sm:text-[2.15rem]">
+                    Ordena, controla y haz crecer tu negocio.
+                  </h3>
+
+                  <p className="mt-4 max-w-lg text-[15px] font-medium leading-relaxed text-white drop-shadow-sm sm:text-base">
+                    Para comercios y negocios que necesitan
+                    tener ventas, inventario, clientes y
+                    gestión bajo control sin complicar su
+                    operación.
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Tag
+                      icon={<Boxes size={14} />}
+                      label="Inventario"
+                    />
+
+                    <Tag
+                      icon={<TrendingUp size={14} />}
+                      label="Ventas"
+                    />
+
+                    <Tag
+                      icon={<Users size={14} />}
+                      label="Clientes"
+                    />
+
+                    <Tag
+                      icon={<Store size={14} />}
+                      label="Operación diaria"
+                    />
+                  </div>
+
+                  <a
+                    href="#comercio"
+                    className="mt-7 inline-flex items-center justify-center rounded-full bg-aster-green px-6 py-3 text-[14px] font-bold text-white shadow-sm transition-all duration-200 hover:bg-aster-greenDark hover:shadow-lg"
+                  >
+                    Conocer Aster para Pymes
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-end p-7 sm:p-10 lg:p-12">
+                <div className="w-full max-w-xl rounded-[28px] border border-white/35 bg-black/10 p-7 text-white shadow-xl sm:p-9">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
+                      <BriefcaseBusiness size={21} />
+                    </span>
+
+                    <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-white">
+                      ASTER para Empresas
+                    </span>
+                  </div>
+
+                  <h3 className="text-3xl font-extrabold leading-tight drop-shadow-md sm:text-[2.15rem]">
+                    Más control para operaciones que necesitan escalar.
+                  </h3>
+
+                  <p className="mt-4 max-w-lg text-[15px] font-medium leading-relaxed text-white drop-shadow-sm sm:text-base">
+                    Para empresas y equipos que necesitan
+                    controlar procesos, indicadores,
+                    operaciones y oportunidades con una
+                    visión más amplia del negocio.
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Tag
+                      icon={<BarChart3 size={14} />}
+                      label="Indicadores"
+                    />
+
+                    <Tag
+                      icon={<BriefcaseBusiness size={14} />}
+                      label="Operaciones"
+                    />
+
+                    <Tag
+                      icon={<Boxes size={14} />}
+                      label="Procesos"
+                    />
+
+                    <Tag
+                      icon={<TrendingUp size={14} />}
+                      label="Estrategia"
+                    />
+                  </div>
+
+                  <a
+                    href="#empresas"
+                    className="mt-7 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-bold text-aster-black shadow-sm transition-all duration-200 hover:bg-aster-green hover:text-white hover:shadow-lg"
+                  >
+                    Conocer Aster para Empresas
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-7 mt-16">
-          <Reveal delay={0}>
-            <div className="h-full rounded-[28px] bg-aster-greenSoft border border-aster-green/15 p-10 sm:p-12 flex flex-col shadow-card hover:shadow-cardHover transition-shadow duration-300">
-              <span className="inline-block w-fit text-sm font-bold tracking-wide text-aster-green uppercase bg-white rounded-full px-4 py-2 mb-7">
-                Aster Comercio para Pymes
-              </span>
-              <h3 className="text-2xl sm:text-[1.8rem] font-extrabold leading-tight text-aster-black">
-                Tu operación visible, incluso cuando no estás ahí.
-              </h3>
-              <p className="mt-4 text-base text-aster-gray leading-relaxed">
-                Para almacenes, minimarkets, botillerías, panaderías, barberías, restaurantes, cafeterías, ferreterías, tiendas y otros comercios.
-              </p>
-              <p className="mt-3 text-base font-semibold text-aster-black">
-                Aplicación + implementación + equipamiento + capacitación + soporte.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mt-7">
-                <MiniStat icon={<Boxes size={16} />} label="Inventario" value="326 SKU" />
-                <MiniStat icon={<TrendingUp size={16} />} label="Ventas" value="$847.300" />
-                <MiniStat icon={<ScanBarcode size={16} />} label="Código de barras" value="Activo" />
-                <MiniStat icon={<AlertTriangle size={16} />} label="Alertas" value="4" tone="red" />
-              </div>
-
-              <a
-                href="#comercio"
-                className="mt-8 inline-flex items-center justify-center w-fit rounded-full bg-aster-green px-6 py-3 text-[15px] font-semibold text-white hover:bg-aster-greenDark transition-colors duration-200"
-              >
-                Conocer Aster Comercio para Pymes
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="h-full rounded-[28px] bg-aster-soft border border-gray-200/60 p-10 sm:p-12 flex flex-col shadow-card hover:shadow-cardHover transition-shadow duration-300">
-              <span className="inline-block w-fit text-sm font-bold tracking-wide text-aster-black uppercase bg-white rounded-full px-4 py-2 mb-7">
-                Empresas &amp; Operaciones
-              </span>
-              <h3 className="text-2xl sm:text-[1.8rem] font-extrabold leading-tight text-aster-black">
-                Decisiones más claras para operaciones más complejas.
-              </h3>
-              <p className="mt-4 text-base text-aster-gray leading-relaxed">
-                Para empresas, pymes consolidadas, equipos, sucursales y organizaciones que necesitan mejorar administración, procesos, ventas, operaciones, datos o personas.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mt-7">
-                <MiniStat icon={<BarChart3 size={16} />} label="KPI" value="Panel en vivo" />
-                <MiniStat icon={<Users size={16} />} label="CRM" value="Clientes" />
-                <MiniStat icon={<Boxes size={16} />} label="Procesos" value="Estandarizados" />
-                <MiniStat icon={<TrendingUp size={16} />} label="Automatización" value="Activa" />
-              </div>
-
-              <a
-                href="#empresas"
-                className="mt-8 inline-flex items-center justify-center w-fit rounded-full bg-aster-black px-6 py-3 text-[15px] font-semibold text-white hover:bg-black transition-colors duration-200"
-              >
-                Ver soluciones para empresas
-              </a>
-            </div>
-          </Reveal>
-        </div>
+        <Reveal delay={160}>
+          <p className="mx-auto mt-8 max-w-3xl text-center text-sm font-medium leading-relaxed text-aster-gray">
+            Desde un negocio que necesita ordenar su
+            operación diaria hasta una empresa que requiere
+            mayor control y capacidad de gestión: ASTER
+            adapta sus soluciones a cada realidad.
+          </p>
+        </Reveal>
       </Container>
     </section>
   );
 }
 
-function MiniStat({
+function Tag({
   icon,
   label,
-  value,
-  tone = 'green',
 }: {
   icon: React.ReactNode;
   label: string;
-  value: string;
-  tone?: 'green' | 'red';
 }) {
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <div className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${tone === 'red' ? 'text-aster-red' : 'text-aster-green'}`}>
-        {icon}
-        {label}
-      </div>
-      <p className="mt-1.5 text-base font-bold text-aster-black">{value}</p>
-    </div>
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/35 bg-black/10 px-3 py-2 text-xs font-semibold text-white">
+      {icon}
+      {label}
+    </span>
   );
 }
