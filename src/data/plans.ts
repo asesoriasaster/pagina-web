@@ -29,6 +29,11 @@ export interface Plan {
   priceSecondaryLabel?: string;
   extra?: string;
 
+  continuityTitle?: string;
+  continuityPrice?: string;
+  continuityUnit?: string;
+  continuityDetail?: string;
+
   priceMessage?: string;
 
   options?: PlanOption[];
@@ -43,7 +48,9 @@ export const plans: Plan[] = [
   {
     id: 'inicia',
     name: 'Aster Inicia',
-    subtitle: 'Empieza a ordenar y digitalizar tu negocio.',
+
+    subtitle:
+      'Empieza a ordenar y digitalizar tu negocio.',
 
     features: [
       'Aster App Básico',
@@ -56,18 +63,26 @@ export const plans: Plan[] = [
 
     cta: 'Conocer Aster Inicia',
 
-    highlight: '15 días de prueba',
-    discountBadge: '50% de descuento en el primer mes',
+    precededBy:
+      'Programa inicial · primer pago',
 
-    pricePrimary: '$29.990',
-    priceUnit: '/ mes',
-    pricePrimaryLabel: 'IVA incluido',
+    pricePrimary: '$84.990',
+
+    pricePrimaryLabel:
+      'Implementación + primera mensualidad · IVA incluido',
 
     priceSecondary:
-      'Primer mes: $14.995 · Implementación: $55.000',
+      '$55.000 implementación + $29.990 primer mes',
 
-    priceSecondaryLabel:
-      'Total inicial: $69.995 · IVA incluido',
+    continuityTitle:
+      'Continuidad mensual',
+
+    continuityPrice: '$29.990',
+
+    continuityUnit: '/ mes',
+
+    continuityDetail:
+      'Desde el segundo mes · IVA incluido',
 
     options: [
       {
@@ -78,13 +93,15 @@ export const plans: Plan[] = [
       {
         label: 'Trimestral',
         price: '$24.990/mes',
-        detail: '$74.970 total · IVA incluido',
+        detail:
+          '$74.970 total · IVA incluido',
         saving: 'Ahorras $15.000',
       },
       {
         label: 'Semestral',
         price: '$20.990/mes',
-        detail: '$125.940 total · IVA incluido',
+        detail:
+          '$125.940 total · IVA incluido',
         saving: 'Ahorras $54.000',
       },
     ],
@@ -103,11 +120,18 @@ export const plans: Plan[] = [
         ],
       },
       {
-        heading: 'Para comenzar',
+        heading: 'Primer pago',
         items: [
-          '15 días de prueba',
-          '50% de descuento en el primer mes',
-          'Implementación inicial incluida según condiciones del plan',
+          'Programa inicial: $84.990 · IVA incluido',
+          'Incluye implementación de $55.000',
+          'Incluye primera mensualidad de $29.990',
+        ],
+      },
+      {
+        heading: 'Continuidad',
+        items: [
+          'Desde el segundo mes: $29.990/mes · IVA incluido',
+          'También disponibles modalidades trimestral y semestral',
         ],
       },
     ],
@@ -119,12 +143,14 @@ export const plans: Plan[] = [
   {
     id: 'avanzado',
     name: 'Aster Avanzado',
+
     subtitle:
       'Más control para tu negocio. Más estrategia para hacerlo crecer.',
 
     badge: 'Recomendado',
     featured: true,
-    precededBy: 'Programa inicial de 3 meses',
+    precededBy:
+      'Programa inicial de 3 meses',
 
     features: [
       'Todo Aster Inicia',
@@ -141,6 +167,7 @@ export const plans: Plan[] = [
 
     pricePrimary: '$108.963',
     priceUnit: '/ mes',
+
     pricePrimaryLabel:
       'durante 3 meses · IVA incluido',
 
@@ -150,8 +177,15 @@ export const plans: Plan[] = [
     priceSecondaryLabel:
       'IVA incluido',
 
-    extra:
-      'Después del programa: $33.900/mes · IVA incluido',
+    continuityTitle:
+      'Después del programa',
+
+    continuityPrice: '$33.900',
+
+    continuityUnit: '/ mes',
+
+    continuityDetail:
+      'IVA incluido',
 
     modalIntro:
       'Tecnología y acompañamiento comercial para entender mejor tu negocio y tomar mejores decisiones.',
@@ -171,6 +205,14 @@ export const plans: Plan[] = [
           'Diagnóstico comercial',
           '3 estrategias sugeridas según tu negocio',
           'Informe final con oportunidades y recomendaciones',
+        ],
+      },
+      {
+        heading: 'Continuidad',
+        items: [
+          'Programa inicial de 3 meses',
+          'Valor total del programa: $326.890 · IVA incluido',
+          'Después del programa: $33.900/mes · IVA incluido',
         ],
       },
     ],
