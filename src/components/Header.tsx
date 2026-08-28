@@ -13,12 +13,57 @@ import {
 } from 'lucide-react';
 
 import LoginModal from '@/components/LoginModal';
+import ProfileModal, {
+  type PerfilWeb,
+} from '@/components/ProfileModal';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import {
   navLinks,
   serviceDropdown,
 } from '@/data/navigation';
 import { supabase } from '@/lib/supabase';
+
+async function getPerfilWeb(
+  userId: string,
+): Promise<PerfilWeb | null> {
+  const {
+    data,
+    error,
+  } = await supabase
+    .from('perfiles_web')
+    .select(
+      'nombre, apellido, telefono, cargo',
+    )
+    .eq('user_id', userId)
+    .maybeSingle();
+
+  if (error) {
+    console.error(
+      'No fue posible cargar el perfil web:',
+      error,
+    );
+
+    return null;
+  }
+
+  return data ?? null;
+}
+
+function getNombreCompleto(
+  profile: PerfilWeb | null,
+) {
+  if (!profile) {
+    return '';
+  }
+
+  return [
+    profile.nombre,
+    profile.apellido,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+}
 
 export default function Header() {
   const [scrolled, setScrolled] =
@@ -38,11 +83,20 @@ export default function Header() {
   const [loginOpen, setLoginOpen] =
     useState(false);
 
+  const [profileOpen, setProfileOpen] =
+    useState(false);
+
   const [user, setUser] =
     useState<User | null>(null);
 
+  const [profile, setProfile] =
+    useState<PerfilWeb | null>(null);
+
   const [authLoading, setAuthLoading] =
     useState(true);
+
+  const nombreCompleto =
+    getNombreCompleto(profile);
 
   useEffect(() => {
     const onScroll = () =>
@@ -74,27 +128,65 @@ export default function Header() {
   useEffect(() => {
     let active = true;
 
-    const loadSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+    const loadInitialSession =
+      async () => {
+        const {
+          data: { session },
+        } =
+          await supabase.auth.getSession();
 
-      if (!active) {
-        return;
-      }
+        if (!active) {
+          return;
+        }
 
-      setUser(session?.user ?? null);
-      setAuthLoading(false);
-    };
+        const currentUser =
+          session?.user ?? null;
 
-    void loadSession();
+        setUser(currentUser);
+
+        if (currentUser) {
+          const currentProfile =
+            await getPerfilWeb(
+              currentUser.id,
+            );
+
+          if (active) {
+            setProfile(currentProfile);
+          }
+        } else {
+          setProfile(null);
+        }
+
+        if (active) {
+          setAuthLoading(false);
+        }
+      };
+
+    void loadInitialSession();
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(
       (_event, session) => {
-        setUser(session?.user ?? null);
+        const currentUser =
+          session?.user ?? null;
+
+        setUser(currentUser);
         setAuthLoading(false);
+
+        if (!currentUser) {
+          setProfile(null);
+          setProfileOpen(false);
+          return;
+        }
+
+        void getPerfilWeb(
+          currentUser.id,
+        ).then((currentProfile) => {
+          if (active) {
+            setProfile(currentProfile);
+          }
+        });
       },
     );
 
@@ -115,8 +207,14 @@ export default function Header() {
     setLoginOpen(true);
   };
 
+  const handleOpenProfile = () => {
+    handleLinkClick();
+    setProfileOpen(true);
+  };
+
   const handleLogout = async () => {
     handleLinkClick();
+    setProfileOpen(false);
 
     await supabase.auth.signOut();
   };
@@ -235,18 +333,45 @@ export default function Header() {
             <div className="ml-4 hidden shrink-0 items-center gap-2 xl:flex">
               {!authLoading &&
                 (user ? (
-                  <button
-                    type="button"
-                    onClick={handleLogout}
-                    title={
-                      user.email ??
-                      'Sesión activa'
-                    }
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-aster-green/30 bg-white px-4 py-2.5 text-[13.5px] font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft"
-                  >
-                    <LogOut size={16} />
-                    Cerrar sesión
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={
+                        handleOpenProfile
+                      }
+                      title="Mi perfil"
+                      className="inline-flex items-center gap-2 rounded-full border border-aster-green/30 bg-white px-3.5 py-2 text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft"
+                    >
+                      <UserRound
+                        size={17}
+                        className="shrink-0"
+                      />
+
+                      <span className="min-w-0 max-w-[165px] text-left leading-tight">
+                        <span className="block truncate text-[12.5px] font-bold">
+                          {nombreCompleto
+                            ? `Hola, ${nombreCompleto}`
+                            : 'Mi perfil'}
+                        </span>
+
+                        <span className="mt-0.5 block truncate text-[10.5px] font-medium text-aster-gray">
+                          {user.email}
+                        </span>
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={
+                        handleLogout
+                      }
+                      title="Cerrar sesión"
+                      aria-label="Cerrar sesión"
+                      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft"
+                    >
+                      <LogOut size={17} />
+                    </button>
+                  </>
                 ) : (
                   <button
                     type="button"
@@ -301,7 +426,7 @@ export default function Header() {
         <div
           className={`overflow-hidden border-t border-gray-100 bg-white transition-[max-height,opacity] duration-300 ease-in-out xl:hidden ${
             menuOpen
-              ? 'max-h-[52rem] opacity-100'
+              ? 'max-h-[56rem] opacity-100'
               : 'max-h-0 opacity-0'
           }`}
         >
@@ -391,11 +516,13 @@ export default function Header() {
                     </span>
 
                     <div className="min-w-0">
-                      <p className="text-xs font-medium text-aster-gray">
-                        Sesión activa
+                      <p className="truncate text-sm font-bold text-aster-black">
+                        {nombreCompleto
+                          ? `Hola, ${nombreCompleto}`
+                          : 'Sesión activa'}
                       </p>
 
-                      <p className="truncate text-sm font-semibold text-aster-black">
+                      <p className="mt-0.5 truncate text-xs font-medium text-aster-gray">
                         {user.email}
                       </p>
                     </div>
@@ -404,9 +531,20 @@ export default function Header() {
                   <button
                     type="button"
                     onClick={
-                      handleLogout
+                      handleOpenProfile
                     }
                     className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-aster-green bg-white px-5 py-2.5 text-sm font-semibold text-aster-green transition-colors hover:bg-aster-green hover:text-white"
+                  >
+                    <UserRound size={16} />
+                    Mi perfil
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={
+                      handleLogout
+                    }
+                    className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 text-sm font-semibold text-aster-gray transition-colors hover:border-aster-green hover:text-aster-green"
                   >
                     <LogOut size={16} />
                     Cerrar sesión
@@ -443,6 +581,21 @@ export default function Header() {
           setLoginOpen(false)
         }
       />
+
+      {user && (
+        <ProfileModal
+          open={profileOpen}
+          user={user}
+          onClose={() =>
+            setProfileOpen(false)
+          }
+          onProfileSaved={(
+            savedProfile,
+          ) => {
+            setProfile(savedProfile);
+          }}
+        />
+      )}
     </>
   );
 }
