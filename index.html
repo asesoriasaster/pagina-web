@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,9 @@
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>ASTER | Asesoría comercial, administrativa y tecnología</title>
+    <title>
+      ASTER | Asesoría comercial, administrativa y tecnología
+    </title>
 
     <meta
       name="description"
@@ -89,7 +91,60 @@
   </head>
 
   <body>
+    <form
+      name="contacto-aster"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input
+        type="hidden"
+        name="form-name"
+        value="contacto-aster"
+      />
+
+      <input name="bot-field" />
+
+      <input
+        type="text"
+        name="nombre"
+      />
+
+      <input
+        type="text"
+        name="empresa"
+      />
+
+      <select name="tipoNegocio">
+        <option value="">
+          Selecciona una opción
+        </option>
+      </select>
+
+      <input
+        type="email"
+        name="email"
+      />
+
+      <input
+        type="tel"
+        name="telefono"
+      />
+
+      <input
+        type="text"
+        name="mejorar"
+      />
+
+      <textarea name="mensaje"></textarea>
+    </form>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+
+    <script
+      type="module"
+      src="/src/main.tsx"
+    ></script>
   </body>
 </html>
