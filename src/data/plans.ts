@@ -195,6 +195,68 @@ export const plans: Plan[] = [
   },
 
   {
+    id: 'aster-avanzado',
+    name: 'Plan Aster Avanzado',
+
+    subtitle:
+      'CRM intermedio y diagnóstico comercial para llevar tu negocio al siguiente nivel.',
+
+    features: [
+      'CRM intermedio para hasta 10 usuarios',
+      'Dashboard y módulo de manufacturación',
+      'Diagnóstico comercial completo',
+      '3 estrategias comerciales sugeridas',
+      'Reportes semanales y mensuales',
+      'Informe final y acompañamiento',
+    ],
+
+    cta: 'Conocer Aster Avanzado',
+
+    priceMessage:
+      'El alcance y valor de Aster Avanzado se definen según las necesidades y objetivos de cada negocio.',
+
+    modalIntro:
+      'Una solución personalizada que combina CRM intermedio y diagnóstico comercial para potenciar tu negocio.',
+
+    modalSections: [
+      {
+        heading: 'Incluye CRM Intermedio',
+        items: [
+          '10 usuarios incluidos',
+          'Entrega de credenciales',
+          'Toma de inventario inicial',
+          'Capacitación del CRM',
+          'Entrega del CRM intermedio',
+          'Dashboard',
+          'Módulo Manufacturación',
+        ],
+      },
+      {
+        heading: 'Diagnóstico Comercial',
+        items: [
+          'Estudio del negocio',
+          'Estudio y análisis del mercado y competencia',
+          'Entrega de 3 estrategias sugeridas',
+          'Reportes Semanales',
+          'Reportes mensuales',
+          'Informe final',
+          'Acompañamiento',
+        ],
+      },
+    ],
+
+    modalProcess: [
+      'CRM',
+      'Diagnóstico',
+      'Estrategias',
+      'Acompañamiento',
+    ],
+
+    modalFooter:
+      'Alcance y valor definidos según las necesidades y objetivos de cada negocio.',
+  },
+
+  {
     id: 'pro',
     name: 'Plan Aster Pro',
 

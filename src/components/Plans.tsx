@@ -72,14 +72,20 @@ export default function Plans() {
           title="Elige el nivel de Aster que necesita tu negocio."
         />
 
-        <div className="mt-16 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-5 xl:gap-5">
           {plans.map((plan, index) => (
             <Reveal
               key={plan.id}
               delay={index * 80}
+              className={
+                index === plans.length - 1 &&
+                plans.length % 2 !== 0
+                  ? 'sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc(50%-0.75rem)] xl:col-span-1 xl:mx-0 xl:max-w-none'
+                  : undefined
+              }
             >
               <article
-                className={`flex flex-col rounded-[26px] p-7 transition-all duration-300 ${getCardStyle(
+                className={`flex flex-col rounded-[26px] p-7 transition-all duration-300 xl:p-6 ${getCardStyle(
                   plan,
                 )}`}
               >
