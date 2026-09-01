@@ -196,17 +196,17 @@ export const plans: Plan[] = [
 
   {
     id: 'pro',
-    name: 'Aster Pro',
+    name: 'Plan Aster Pro',
 
     subtitle:
-      'GestiÃ³n avanzada, estrategia comercial y marketing para hacer crecer tu negocio.',
+      'Gestión avanzada, estrategia comercial y marketing para hacer crecer tu negocio.',
 
     features: [
       'Todo Aster Avanzado',
       'Hasta 15 usuarios',
       'Gastos y Balances',
       'Automatizaciones e integraciones',
-      'DiagnÃ³stico y estrategias',
+      'Diagnóstico y estrategias',
       'Plan de Marketing Digital',
       'Meta Ads',
       'Publicidad pagada en Meta incluida',
@@ -215,14 +215,14 @@ export const plans: Plan[] = [
     cta: 'Conocer Aster Pro',
 
     priceMessage:
-      'El alcance y valor de Aster Pro se definen segÃºn las necesidades y objetivos de cada negocio.',
+      'El alcance y valor de Aster Pro se definen según las necesidades y objetivos de cada negocio.',
 
     modalIntro:
-      'Una soluciÃ³n personalizada que conecta gestiÃ³n, estrategia comercial y marketing.',
+      'Una solución personalizada que conecta gestión, estrategia comercial y marketing.',
 
     modalSections: [
       {
-        heading: 'GestiÃ³n avanzada',
+        heading: 'Gestión avanzada',
         items: [
           'Aster App para hasta 15 usuarios',
           'Automatizaciones e integraciones',
@@ -232,64 +232,64 @@ export const plans: Plan[] = [
       {
         heading: 'Estrategia y marketing',
         items: [
-          'DiagnÃ³stico y estrategias comerciales',
+          'Diagnóstico y estrategias comerciales',
           'Plan de Marketing Digital',
-          'CampaÃ±as y publicidad en Meta',
+          'Campañas y publicidad en Meta',
         ],
       },
     ],
 
     modalProcess: [
-      'DiagnÃ³stico',
+      'Diagnóstico',
       'Estrategia',
-      'EjecuciÃ³n',
-      'MediciÃ³n',
+      'Ejecución',
+      'Medición',
     ],
 
     modalFooter:
-      'Alcance y valor definidos segÃºn las necesidades de cada negocio.',
+      'Alcance y valor definidos según las necesidades de cada negocio.',
   },
 
   {
     id: 'integral',
-    name: 'Aster Integral',
+    name: 'Plan Aster Integral',
 
     subtitle:
-      'TecnologÃ­a, estrategia, marketing y gestiÃ³n continua para tu negocio.',
+      'Tecnología, estrategia, marketing y gestión continua para tu negocio.',
 
     features: [
       'Todo Aster Pro',
       'Gastos y Balances',
-      'DiagnÃ³stico y estrategias',
+      'Diagnóstico y estrategias',
       'Plan de Marketing Digital',
       'Publicidad pagada en Meta incluida',
       'Community Manager',
-      'GestiÃ³n continua de redes sociales',
-      'Seguimiento y optimizaciÃ³n',
+      'Gestión continua de redes sociales',
+      'Seguimiento y optimización',
     ],
 
     cta: 'Conocer Aster Integral',
 
     priceMessage:
-      'El alcance y valor de Aster Integral se definen segÃºn la realidad y necesidades de cada negocio.',
+      'El alcance y valor de Aster Integral se definen según la realidad y necesidades de cada negocio.',
 
     modalIntro:
-      'La soluciÃ³n mÃ¡s completa de Aster para centralizar gestiÃ³n, estrategia y presencia digital.',
+      'La solución más completa de Aster para centralizar gestión, estrategia y presencia digital.',
 
     modalSections: [
       {
-        heading: 'SoluciÃ³n integral',
+        heading: 'Solución integral',
         items: [
           'Todo lo incluido en Aster Pro',
           'Community Manager',
-          'GestiÃ³n continua de redes sociales',
-          'Seguimiento y optimizaciÃ³n',
+          'Gestión continua de redes sociales',
+          'Seguimiento y optimización',
         ],
       },
       {
         heading: 'Todo conectado',
         items: [
-          'InformaciÃ³n para detectar oportunidades',
+          'Información para detectar oportunidades',
           'Estrategias para actuar',
           'Marketing para ejecutar y medir resultados',
         ],
@@ -297,13 +297,13 @@ export const plans: Plan[] = [
     ],
 
     modalProcess: [
-      'GestiÃ³n',
+      'Gestión',
       'Estrategia',
       'Marketing',
-      'OptimizaciÃ³n',
+      'Optimización',
     ],
 
     modalFooter:
-      'Alcance y valor definidos segÃºn la realidad y necesidades de cada negocio.',
+      'Alcance y valor definidos según la realidad y necesidades de cada negocio.',
   },
 ];
