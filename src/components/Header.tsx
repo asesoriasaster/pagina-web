@@ -237,7 +237,7 @@ export default function Header() {
               aria-label="ASTER - Inicio"
             >
               <img
-                src="/assets/images/ASTER_LOGO.jpeg"
+                src="/assets/images/logo-aster360.png"
                 alt="Logo ASTER"
                 className="h-14 w-auto object-contain"
               />

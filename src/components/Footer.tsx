@@ -65,7 +65,7 @@ export default function Footer() {
               aria-label="ASTER - Inicio"
             >
               <img
-                src="/assets/images/ASTER_LOGO.jpeg"
+                src="/assets/images/logo-aster360.png"
                 alt="Logo ASTER"
                 className="mb-4 h-12 w-auto object-contain"
                 loading="lazy"
