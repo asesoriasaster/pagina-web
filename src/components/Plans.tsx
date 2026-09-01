@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
 
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
@@ -223,29 +222,7 @@ export default function Plans() {
                   </div>
                 )}
 
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map(
-                    (feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2.5"
-                      >
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-aster-green shadow-sm">
-                          <Check
-                            size={12}
-                            strokeWidth={3}
-                          />
-                        </span>
-
-                        <span className="text-[13.5px] leading-snug text-aster-black">
-                          {feature}
-                        </span>
-                      </li>
-                    ),
-                  )}
-                </ul>
-
-                <div className="mt-auto flex flex-col gap-2.5 pt-8">
+                <div className="mt-auto flex flex-col gap-2.5 pt-6">
                   <a
                     href="https://wa.me/56983480052"
                     className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-all duration-200 ${
