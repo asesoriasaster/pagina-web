@@ -33,7 +33,7 @@ export default function PaginasWeb() {
   return (
     <section
       id="paginas-web"
-      className="scroll-mt-20 bg-aster-soft py-24 sm:py-28"
+      className="scroll-mt-36 bg-aster-soft py-24 sm:py-28 sm:scroll-mt-48"
     >
       <Container>
         <SectionHeading

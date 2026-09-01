@@ -221,7 +221,7 @@ export default function Contact() {
   return (
     <section
       id="contacto"
-      className="scroll-mt-20 bg-white py-24 sm:py-28"
+      className="scroll-mt-36 bg-white py-24 sm:py-28 sm:scroll-mt-48"
     >
       <Container>
         <div className="grid items-start gap-14 lg:grid-cols-2">

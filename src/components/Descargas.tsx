@@ -18,7 +18,7 @@ const resources: Resource[] = [
 
 export default function Descargas() {
   return (
-    <section id="descargas" className="py-24 sm:py-28 bg-aster-soft scroll-mt-20">
+    <section id="descargas" className="py-24 sm:py-28 bg-aster-soft scroll-mt-36 sm:scroll-mt-48">
       <Container>
         <SectionHeading
           title="Descargas"

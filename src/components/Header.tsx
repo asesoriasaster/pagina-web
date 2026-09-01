@@ -229,7 +229,7 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+          <div className="flex h-36 items-center justify-between sm:h-48">
             <a
               href="#inicio"
               onClick={handleLinkClick}
@@ -239,7 +239,7 @@ export default function Header() {
               <img
                 src="/assets/images/logo-aster360.png"
                 alt="Logo ASTER"
-                className="h-14 w-auto object-contain"
+                className="h-32 w-auto object-contain sm:h-44"
               />
             </a>
 

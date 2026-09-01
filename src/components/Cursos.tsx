@@ -5,7 +5,7 @@ import Reveal from '@/components/Reveal';
 
 export default function Cursos() {
   return (
-    <section id="cursos" className="py-24 sm:py-28 bg-white scroll-mt-20">
+    <section id="cursos" className="py-24 sm:py-28 bg-white scroll-mt-36 sm:scroll-mt-48">
       <Container>
         <SectionHeading title="Cursos y capacitaciones" />
 
