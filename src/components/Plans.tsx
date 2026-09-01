@@ -72,15 +72,14 @@ export default function Plans() {
           title="Elige el nivel de Aster que necesita tu negocio."
         />
 
-        <div className="mt-16 grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {plans.map((plan, index) => (
             <Reveal
               key={plan.id}
               delay={index * 80}
-              className="h-full"
             >
               <article
-                className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 ${getCardStyle(
+                className={`flex flex-col rounded-[26px] p-7 transition-all duration-300 ${getCardStyle(
                   plan,
                 )}`}
               >
@@ -108,7 +107,7 @@ export default function Plans() {
 
                 {plan.priceMessage ? (
                   <div className="mt-6 border-b border-aster-green/20 pb-5">
-                    <div className="flex min-h-[128px] items-center rounded-2xl border border-aster-green/20 bg-white/85 p-5 shadow-sm">
+                    <div className="flex items-center rounded-2xl border border-aster-green/20 bg-white/85 p-5 shadow-sm">
                       <div>
                         <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
                           Plan personalizado
@@ -127,7 +126,7 @@ export default function Plans() {
                   </div>
                 ) : (
                   <div className="mt-6 border-b border-aster-green/20 pb-5">
-                    <div className="min-h-[128px]">
+                    <div>
                       {plan.precededBy && (
                         <p className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
                           {plan.precededBy}
@@ -222,7 +221,7 @@ export default function Plans() {
                   </div>
                 )}
 
-                <div className="mt-auto flex flex-col gap-2.5 pt-6">
+                <div className="flex flex-col gap-2.5 pt-6">
                   <a
                     href="https://wa.me/56983480052"
                     className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-all duration-200 ${
