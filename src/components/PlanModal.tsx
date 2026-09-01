@@ -59,30 +59,77 @@ export default function PlanModal({
           {plan.modalIntro}
         </p>
 
-        {plan.modalSections.map((section) => (
-          <div key={section.heading} className="mt-7">
-            <h4 className="text-sm font-bold uppercase tracking-wide text-aster-green">
-              {section.heading}
-            </h4>
+        {plan.modalSections.map((section) => {
+          const esOpcionesInicia =
+            (plan.id === 'inicia' || plan.id === 'avanzado') &&
+            section.heading === 'Opciones de contratación' &&
+            plan.options &&
+            plan.options.length > 0;
 
-            <ul className="mt-3 space-y-2.5">
-              {section.items.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2.5"
-                >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-aster-greenSoft text-aster-green">
-                    <Check size={12} strokeWidth={3} />
-                  </span>
+          if (esOpcionesInicia) {
+            return (
+              <div key={section.heading} className="mt-7">
+                <h4 className="text-sm font-bold uppercase tracking-wide text-aster-green">
+                  {section.heading}
+                </h4>
 
-                  <span className="text-[14px] leading-snug text-aster-black">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {plan.options!.map((option) => (
+                    <div
+                      key={option.label}
+                      className="relative rounded-2xl border border-aster-green/25 bg-white p-4 shadow-sm"
+                    >
+                      {option.saving && (
+                        <span className="absolute right-3 top-3 rounded-full bg-aster-green px-2.5 py-1 text-[10.5px] font-extrabold text-white">
+                          {option.saving}
+                        </span>
+                      )}
+
+                      <p className="pr-16 text-[11px] font-extrabold uppercase tracking-[0.12em] text-aster-green">
+                        {option.label}
+                      </p>
+
+                      <p className="mt-3 text-[19px] font-extrabold leading-tight tracking-tight text-aster-black">
+                        {option.price}
+                      </p>
+
+                      {option.detail && (
+                        <p className="mt-2 text-[11.5px] font-medium leading-relaxed text-aster-gray">
+                          {option.detail}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <div key={section.heading} className="mt-7">
+              <h4 className="text-sm font-bold uppercase tracking-wide text-aster-green">
+                {section.heading}
+              </h4>
+
+              <ul className="mt-3 space-y-2.5">
+                {section.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-aster-greenSoft text-aster-green">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+
+                    <span className="text-[14px] leading-snug text-aster-black">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
 
         {(() => {
           const process = plan.modalProcess;

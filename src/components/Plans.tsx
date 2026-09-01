@@ -81,7 +81,7 @@ export default function Plans() {
               className="h-full"
             >
               <article
-                className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 ${getCardStyle(
+                className={`${['inicia', 'avanzado', 'pro', 'integral'].includes(plan.id) ? '' : 'h-full'} flex flex-col rounded-[26px] p-7 transition-all duration-300 ${getCardStyle(
                   plan,
                 )}`}
               >
@@ -100,7 +100,15 @@ export default function Plans() {
                 </div>
 
                 <h3 className="text-xl font-extrabold text-aster-black">
-                  {plan.name}
+                  {plan.id === 'inicia'
+                    ? 'Aster App Inicia'
+                    : plan.id === 'avanzado'
+                      ? 'Aster App Plus'
+                      : plan.id === 'pro'
+                        ? 'Plan Aster Pro'
+                        : plan.id === 'integral'
+                          ? 'Plan Aster Integral'
+                          : plan.name}
                 </h3>
 
                 <p className="mt-1.5 min-h-[62px] text-[14px] font-medium leading-relaxed text-aster-gray">
@@ -109,7 +117,7 @@ export default function Plans() {
 
                 {plan.priceMessage ? (
                   <div className="mt-6 border-b border-aster-green/20 pb-5">
-                    <div className="flex min-h-[190px] items-center rounded-2xl border border-aster-green/20 bg-white/85 p-5 shadow-sm">
+                    <div className="flex min-h-[128px] items-center rounded-2xl border border-aster-green/20 bg-white/85 p-5 shadow-sm">
                       <div>
                         <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
                           Plan personalizado
@@ -129,12 +137,9 @@ export default function Plans() {
                 ) : (
                   <div className="mt-6 border-b border-aster-green/20 pb-5">
                     <div className="min-h-[128px]">
-                      {(plan.id === 'inicia' ||
-                        plan.precededBy) && (
+                      {plan.precededBy && (
                         <p className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
-                          {plan.id === 'inicia'
-                            ? 'Implementación inicial'
-                            : plan.precededBy}
+                          {plan.precededBy}
                         </p>
                       )}
 
@@ -168,7 +173,6 @@ export default function Plans() {
                         </p>
                       )}
                     </div>
-
                     {plan.continuityPrice && (
                       <div
                         className={`mt-5 rounded-2xl border-2 p-4 ${
@@ -227,6 +231,7 @@ export default function Plans() {
                   </div>
                 )}
 
+                {!['inicia', 'avanzado', 'pro', 'integral'].includes(plan.id) && (
                 <ul className="mt-6 space-y-3">
                   {plan.features.map(
                     (feature) => (
@@ -248,8 +253,9 @@ export default function Plans() {
                     ),
                   )}
                 </ul>
+              )}
 
-                <div className="mt-auto flex flex-col gap-2.5 pt-8">
+                <div className={`flex flex-col gap-2.5 ${['inicia', 'avanzado', 'pro', 'integral'].includes(plan.id) ? 'pt-5' : 'mt-auto pt-8'}`}>
                   <a
                     href="https://wa.me/56983480052"
                     className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-all duration-200 ${
@@ -288,7 +294,7 @@ export default function Plans() {
               Equipamiento, inventario inicial,
               configuraciones especiales o
               servicios fuera del alcance
-              indicado pueden cotizarse según
+              indicado pueden cotizarse segÃºn
               las necesidades de cada negocio.
             </p>
           </div>

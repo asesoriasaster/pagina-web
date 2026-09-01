@@ -47,7 +47,7 @@ export interface Plan {
 export const plans: Plan[] = [
   {
     id: 'inicia',
-    name: 'Aster Inicia',
+    name: 'Aster App Inicia',
 
     subtitle:
       'Empieza a ordenar y digitalizar tu negocio.',
@@ -63,46 +63,29 @@ export const plans: Plan[] = [
 
     cta: 'Conocer Aster Inicia',
 
-    precededBy:
-      'Programa inicial · primer pago',
-
-    pricePrimary: '$84.990',
+    pricePrimary: '$29.990',
+    priceUnit: '/mes',
 
     pricePrimaryLabel:
-      'Implementación + primera mensualidad · IVA incluido',
-
-    priceSecondary:
-      '$55.000 implementación + $29.990 primer mes',
-
-    continuityTitle:
-      'Continuidad mensual',
-
-    continuityPrice: '$29.990',
-
-    continuityUnit: '/ mes',
-
-    continuityDetail:
-      'Desde el segundo mes · IVA incluido',
+      'Valores IVA incluido',
 
     options: [
       {
         label: 'Mensual',
-        price: '$29.990/mes',
+        price: 'Desde $29.990/mes',
         detail: 'IVA incluido',
       },
       {
-        label: 'Trimestral',
-        price: '$24.990/mes',
-        detail:
-          '$74.970 total · IVA incluido',
-        saving: 'Ahorras $15.000',
+        label: 'Pack 3 meses',
+        price: 'Desde $24.990 mensual',
+        detail: 'IVA incluido',
+        saving: '17% OFF',
       },
       {
-        label: 'Semestral',
-        price: '$20.990/mes',
-        detail:
-          '$125.940 total · IVA incluido',
-        saving: 'Ahorras $54.000',
+        label: 'Pack 6 meses',
+        price: 'Desde $20.990 mensual',
+        detail: 'IVA incluido',
+        saving: '30% OFF',
       },
     ],
 
@@ -120,105 +103,95 @@ export const plans: Plan[] = [
         ],
       },
       {
-        heading: 'Primer pago',
+        heading: 'Opciones de contratación',
         items: [
-          'Programa inicial: $84.990 · IVA incluido',
-          'Incluye implementación de $55.000',
-          'Incluye primera mensualidad de $29.990',
-        ],
-      },
-      {
-        heading: 'Continuidad',
-        items: [
-          'Desde el segundo mes: $29.990/mes · IVA incluido',
-          'También disponibles modalidades trimestral y semestral',
+          'Mensual: Desde $29.990/mes · IVA incluido',
+          'Pack 3 meses: Desde $24.990 mensual · 17% OFF · IVA incluido',
+          'Pack 6 meses: Desde $20.990 mensual · 30% OFF · IVA incluido',
         ],
       },
     ],
 
     modalFooter:
-      'Ideal para negocios que necesitan comenzar a digitalizar y centralizar su operación.',
+      'Valores IVA incluido.',
   },
 
   {
     id: 'avanzado',
-    name: 'Aster Avanzado',
+    name: 'Aster App Plus',
 
     subtitle:
-      'Más control para tu negocio. Más estrategia para hacerlo crecer.',
+      'Más control y herramientas para gestionar tu negocio.',
 
     badge: 'Recomendado',
     featured: true,
-    precededBy:
-      'Programa inicial de 3 meses',
 
     features: [
-      'Todo Aster Inicia',
-      'Hasta 10 usuarios',
-      'Alertas y CRM avanzado',
-      'Gastos y Balances',
-      'Diagnóstico y análisis comercial',
-      'Reportes semanales y mensuales',
-      '3 estrategias comerciales sugeridas',
-      'Informe final',
+      'Dashboard',
+      'Capacitación',
+      'Manufacturación',
+      'Integración Mercado Pago',
+      'Módulo de gastos',
+      'Módulo de gestión de clientes',
     ],
 
-    cta: 'Conocer Aster Avanzado',
+    cta: 'Conocer Aster App Plus',
 
-    pricePrimary: '$108.963',
-    priceUnit: '/ mes',
+    pricePrimary: '$35.990',
+    priceUnit: '/mes',
 
     pricePrimaryLabel:
-      'durante 3 meses · IVA incluido',
-
-    priceSecondary:
-      'Valor total programa: $326.890',
-
-    priceSecondaryLabel:
       'IVA incluido',
 
-    continuityTitle:
-      'Después del programa',
-
-    continuityPrice: '$33.900',
-
-    continuityUnit: '/ mes',
-
-    continuityDetail:
-      'IVA incluido',
+    options: [
+      {
+        label: 'Mensual',
+        price: '$35.990/mes',
+        detail: 'IVA incluido',
+      },
+      {
+        label: 'Pack 3 meses',
+        price: '$29.990 Mensual',
+        detail: 'IVA incluido',
+        saving: '17% OFF',
+      },
+      {
+        label: 'Pack 6 meses',
+        price: '$25.190 Mensual',
+        detail: 'IVA incluido',
+        saving: '30% OFF',
+      },
+    ],
 
     modalIntro:
-      'Tecnología y acompañamiento comercial para entender mejor tu negocio y tomar mejores decisiones.',
+      'Más herramientas para controlar y gestionar tu negocio con Aster.',
 
     modalSections: [
       {
-        heading: 'Más control',
+        heading: 'Incluye',
         items: [
-          'Aster App para hasta 10 usuarios',
-          'CRM, alertas, gastos y balances',
-          'Reportes y seguimiento comercial',
+          '10 usuarios',
+          'Entrega de credenciales',
+          'Toma de inventario inicial',
+          'Capacitación del CRM',
+          'Dashboard',
+          'Módulo Manufacturación',
+          'Módulo de gastos',
+          'Módulo de gestión de clientes',
         ],
       },
       {
-        heading: 'Más estrategia',
+        heading: 'Opciones de contratación',
         items: [
-          'Diagnóstico comercial',
-          '3 estrategias sugeridas según tu negocio',
-          'Informe final con oportunidades y recomendaciones',
-        ],
-      },
-      {
-        heading: 'Continuidad',
-        items: [
-          'Programa inicial de 3 meses',
-          'Valor total del programa: $326.890 · IVA incluido',
-          'Después del programa: $33.900/mes · IVA incluido',
+          'Mensual: $35.990/mes · IVA incluido',
+          'Pack 3 meses: $29.990 mensual · 17% OFF · IVA incluido',
+          'Pack 6 meses: $25.190 mensual · 30% OFF · IVA incluido',
         ],
       },
     ],
 
     modalFooter:
-      'Después del programa inicial continúas con Aster Avanzado por $33.900/mes · IVA incluido.',
+      'Valores IVA incluido.',
   },
 
   {
@@ -226,14 +199,14 @@ export const plans: Plan[] = [
     name: 'Aster Pro',
 
     subtitle:
-      'Gestión avanzada, estrategia comercial y marketing para hacer crecer tu negocio.',
+      'GestiÃ³n avanzada, estrategia comercial y marketing para hacer crecer tu negocio.',
 
     features: [
       'Todo Aster Avanzado',
       'Hasta 15 usuarios',
       'Gastos y Balances',
       'Automatizaciones e integraciones',
-      'Diagnóstico y estrategias',
+      'DiagnÃ³stico y estrategias',
       'Plan de Marketing Digital',
       'Meta Ads',
       'Publicidad pagada en Meta incluida',
@@ -242,14 +215,14 @@ export const plans: Plan[] = [
     cta: 'Conocer Aster Pro',
 
     priceMessage:
-      'El alcance y valor de Aster Pro se definen según las necesidades y objetivos de cada negocio.',
+      'El alcance y valor de Aster Pro se definen segÃºn las necesidades y objetivos de cada negocio.',
 
     modalIntro:
-      'Una solución personalizada que conecta gestión, estrategia comercial y marketing.',
+      'Una soluciÃ³n personalizada que conecta gestiÃ³n, estrategia comercial y marketing.',
 
     modalSections: [
       {
-        heading: 'Gestión avanzada',
+        heading: 'GestiÃ³n avanzada',
         items: [
           'Aster App para hasta 15 usuarios',
           'Automatizaciones e integraciones',
@@ -259,22 +232,22 @@ export const plans: Plan[] = [
       {
         heading: 'Estrategia y marketing',
         items: [
-          'Diagnóstico y estrategias comerciales',
+          'DiagnÃ³stico y estrategias comerciales',
           'Plan de Marketing Digital',
-          'Campañas y publicidad en Meta',
+          'CampaÃ±as y publicidad en Meta',
         ],
       },
     ],
 
     modalProcess: [
-      'Diagnóstico',
+      'DiagnÃ³stico',
       'Estrategia',
-      'Ejecución',
-      'Medición',
+      'EjecuciÃ³n',
+      'MediciÃ³n',
     ],
 
     modalFooter:
-      'Alcance y valor definidos según las necesidades de cada negocio.',
+      'Alcance y valor definidos segÃºn las necesidades de cada negocio.',
   },
 
   {
@@ -282,41 +255,41 @@ export const plans: Plan[] = [
     name: 'Aster Integral',
 
     subtitle:
-      'Tecnología, estrategia, marketing y gestión continua para tu negocio.',
+      'TecnologÃ­a, estrategia, marketing y gestiÃ³n continua para tu negocio.',
 
     features: [
       'Todo Aster Pro',
       'Gastos y Balances',
-      'Diagnóstico y estrategias',
+      'DiagnÃ³stico y estrategias',
       'Plan de Marketing Digital',
       'Publicidad pagada en Meta incluida',
       'Community Manager',
-      'Gestión continua de redes sociales',
-      'Seguimiento y optimización',
+      'GestiÃ³n continua de redes sociales',
+      'Seguimiento y optimizaciÃ³n',
     ],
 
     cta: 'Conocer Aster Integral',
 
     priceMessage:
-      'El alcance y valor de Aster Integral se definen según la realidad y necesidades de cada negocio.',
+      'El alcance y valor de Aster Integral se definen segÃºn la realidad y necesidades de cada negocio.',
 
     modalIntro:
-      'La solución más completa de Aster para centralizar gestión, estrategia y presencia digital.',
+      'La soluciÃ³n mÃ¡s completa de Aster para centralizar gestiÃ³n, estrategia y presencia digital.',
 
     modalSections: [
       {
-        heading: 'Solución integral',
+        heading: 'SoluciÃ³n integral',
         items: [
           'Todo lo incluido en Aster Pro',
           'Community Manager',
-          'Gestión continua de redes sociales',
-          'Seguimiento y optimización',
+          'GestiÃ³n continua de redes sociales',
+          'Seguimiento y optimizaciÃ³n',
         ],
       },
       {
         heading: 'Todo conectado',
         items: [
-          'Información para detectar oportunidades',
+          'InformaciÃ³n para detectar oportunidades',
           'Estrategias para actuar',
           'Marketing para ejecutar y medir resultados',
         ],
@@ -324,13 +297,13 @@ export const plans: Plan[] = [
     ],
 
     modalProcess: [
-      'Gestión',
+      'GestiÃ³n',
       'Estrategia',
       'Marketing',
-      'Optimización',
+      'OptimizaciÃ³n',
     ],
 
     modalFooter:
-      'Alcance y valor definidos según la realidad y necesidades de cada negocio.',
+      'Alcance y valor definidos segÃºn la realidad y necesidades de cada negocio.',
   },
 ];
