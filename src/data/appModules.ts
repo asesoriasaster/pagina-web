@@ -1,14 +1,4 @@
-import {
-  Boxes,
-  Wallet,
-  BellRing,
-  Heart,
-  Users,
-  RotateCcw,
-  Wrench,
-  Scale,
-  LucideIcon,
-} from 'lucide-react';
+import { Boxes, Wallet, BellRing, Heart, Users, RotateCcw, Wrench, Scale, type LucideIcon } from 'lucide-react';
 
 export interface AppModule {
   id: string;
@@ -20,60 +10,43 @@ export interface AppModule {
 
 export const appModules: AppModule[] = [
   {
-    id: 'inventario',
-    name: 'Inventario',
-    icon: Boxes,
-    description: 'Stock, entradas, salidas, compras, mermas, vencimientos, proveedores, costos, márgenes y rotación.',
-    tags: ['Stock', 'Entradas', 'Salidas', 'Compras', 'Mermas', 'Vencimientos', 'Proveedores', 'Costos', 'Márgenes', 'Rotación'],
+    id: 'inventario', name: 'Inventario', icon: Boxes,
+    description: 'Conoce tu stock y planifica tus compras con información real.',
+    tags: ['Stock y movimientos', 'Compras y proveedores', 'Mermas y vencimientos', 'Costos, márgenes y rotación'],
   },
   {
-    id: 'ventas',
-    name: 'Ventas y caja',
-    icon: Wallet,
-    description: 'Ventas por periodo, producto, trabajador, horario, ticket promedio, métodos de pago, aperturas, cierres y diferencias.',
-    tags: ['Por periodo', 'Por producto', 'Por trabajador', 'Ticket promedio', 'Métodos de pago', 'Aperturas', 'Cierres', 'Diferencias'],
+    id: 'ventas', name: 'Ventas', icon: Wallet,
+    description: 'Revisa cuánto vendes, cómo te pagan y cómo cierra tu caja.',
+    tags: ['Por fecha, producto y vendedor', 'Horarios y ticket promedio', 'Métodos de pago', 'Aperturas, cierres y diferencias'],
   },
   {
-    id: 'alertas',
-    name: 'Alertas',
-    icon: BellRing,
-    description: 'Stock crítico, vencimientos, diferencias de caja, movimientos importantes y cambios relevantes.',
-    tags: ['Stock crítico', 'Vencimientos', 'Diferencias de caja', 'Movimientos importantes', 'Cambios relevantes'],
+    id: 'gastos-balances', name: 'Gastos y balances', icon: Scale,
+    description: 'Compara ventas y gastos para entender el resultado de tu negocio.',
+    tags: ['Gastos fijos y variables', 'Otros gastos', 'Balance del negocio', 'Indicadores en el panel'],
   },
   {
-    id: 'clientes',
-    name: 'Clientes y fidelización',
-    icon: Heart,
-    description: 'Base de clientes, historial, frecuencia, última compra, promociones y beneficios.',
-    tags: ['Base de clientes', 'Historial', 'Frecuencia', 'Última compra', 'Promociones', 'Beneficios'],
+    id: 'alertas', name: 'Alertas', icon: BellRing,
+    description: 'Identifica a tiempo lo que necesita tu atención.',
+    tags: ['Stock crítico', 'Próximos vencimientos', 'Diferencias de caja', 'Movimientos y cambios relevantes'],
   },
   {
-    id: 'personal',
-    name: 'Personal y permisos',
-    icon: Users,
-    description: 'Usuarios, perfiles, accesos, responsabilidades e historial de operaciones.',
-    tags: ['Usuarios', 'Perfiles', 'Accesos', 'Responsabilidades', 'Historial de operaciones'],
+    id: 'clientes', name: 'Clientes', icon: Heart,
+    description: 'Conoce sus hábitos de compra y crea motivos para que vuelvan.',
+    tags: ['Base e historial de clientes', 'Frecuencia y última compra', 'Promociones y beneficios'],
   },
   {
-    id: 'postventa',
-    name: 'Postventa',
-    icon: RotateCcw,
-    description: 'Reclamos, cambios, devoluciones, garantías, solicitudes y seguimiento.',
-    tags: ['Reclamos', 'Cambios', 'Devoluciones', 'Garantías', 'Solicitudes', 'Seguimiento'],
+    id: 'personal', name: 'Equipo y permisos', icon: Users,
+    description: 'Define quién puede hacer qué y consulta su actividad.',
+    tags: ['Usuarios y perfiles', 'Accesos y responsabilidades', 'Historial de operaciones'],
   },
   {
-    id: 'servicio-tecnico',
-    name: 'Servicio técnico',
-    icon: Wrench,
-    description: 'Ingreso, diagnóstico, presupuesto, aprobación, reparación y entrega.',
-    tags: ['Ingreso', 'Diagnóstico', 'Presupuesto', 'Aprobación', 'Reparación', 'Entrega'],
+    id: 'postventa', name: 'Postventa', icon: RotateCcw,
+    description: 'Da seguimiento a cada solicitud después de la venta.',
+    tags: ['Reclamos y solicitudes', 'Cambios y devoluciones', 'Garantías y seguimiento'],
   },
   {
-    id: 'gastos-balances',
-    name: 'Gastos y Balances',
-    icon: Scale,
-    description:
-      'Una visión más completa de lo que vende, gasta y genera tu negocio. Permite registrar y visualizar gastos fijos, gastos variables y otros gastos. El balance se muestra dentro del dashboard junto con ventas y otros indicadores para entregar al cliente una visión global y precisa de su negocio.',
-    tags: ['Gastos fijos', 'Gastos variables', 'Otros gastos', 'Balance', 'Dashboard'],
+    id: 'servicio-tecnico', name: 'Servicio técnico', icon: Wrench,
+    description: 'Organiza cada reparación, desde el ingreso hasta la entrega.',
+    tags: ['Ingreso y diagnóstico', 'Presupuesto y aprobación', 'Reparación y entrega'],
   },
 ];

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 import LoginModal from '@/components/LoginModal';
+import { PUBLIC_WHATSAPP_URL } from '@/lib/publicLinks';
 import ProfileModal, {
   type PerfilWeb,
 } from '@/components/ProfileModal';
@@ -229,22 +230,22 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8">
-          <div className="flex h-36 items-center justify-between sm:h-48">
+          <div className="flex h-[72px] items-center justify-between gap-3 sm:h-24">
             <a
               href="#inicio"
               onClick={handleLinkClick}
-              className="flex shrink-0 items-center"
+              className="relative block h-16 w-[205px] shrink-0 overflow-hidden sm:h-[72px] sm:w-[240px]"
               aria-label="ASTER - Inicio"
             >
               <img
                 src="/assets/images/logo-aster360.png"
                 alt="Logo ASTER"
-                className="h-32 w-auto object-contain sm:h-44"
+                className="absolute -top-8 left-0 h-auto w-full max-w-none mix-blend-multiply sm:-top-9"
               />
             </a>
 
             <nav
-              className="hidden items-center gap-5 xl:flex"
+              className="hidden items-center gap-3 xl:flex"
               aria-label="Navegación principal"
             >
               {navLinks.map((link) =>
@@ -270,7 +271,7 @@ export default function Header() {
                         servicesOpen
                       }
                       aria-haspopup="true"
-                      className="group relative flex items-center gap-1 whitespace-nowrap text-[13.5px] font-semibold text-aster-green transition-colors hover:text-aster-greenDark"
+                      className="group relative flex items-center gap-1 whitespace-nowrap text-sm font-semibold text-aster-green transition-colors hover:text-aster-greenDark"
                     >
                       {link.label}
 
@@ -320,7 +321,7 @@ export default function Header() {
                     onClick={
                       handleLinkClick
                     }
-                    className="group relative whitespace-nowrap text-[13.5px] font-semibold text-aster-green transition-colors hover:text-aster-greenDark"
+                    className="group relative whitespace-nowrap text-sm font-semibold text-aster-green transition-colors hover:text-aster-greenDark"
                   >
                     {link.label}
 
@@ -330,7 +331,8 @@ export default function Header() {
               )}
             </nav>
 
-            <div className="ml-4 hidden shrink-0 items-center gap-2 xl:flex">
+            <div className="ml-4 hidden shrink-0 items-center gap-2 md:flex">
+
               {!authLoading &&
                 (user ? (
                   <>
@@ -378,7 +380,7 @@ export default function Header() {
                     onClick={
                       handleOpenLogin
                     }
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-aster-green/30 bg-white px-4 py-2.5 text-[13.5px] font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-aster-green/30 bg-white font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft gap-1.5 px-4 py-2 text-[13px]"
                   >
                     <LogIn size={16} />
                     Iniciar sesión
@@ -388,7 +390,7 @@ export default function Header() {
               <a
                 href="https://wa.me/56983480052"
                 onClick={handleLinkClick}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-aster-green px-5 py-2.5 text-[14px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-aster-greenDark hover:shadow-cardHover"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-aster-green font-semibold text-white shadow-sm transition-all duration-200 hover:bg-aster-greenDark hover:shadow-cardHover gap-1.5 px-4 py-2 text-[13px]"
               >
                 <WhatsAppIcon size={17} />
                 Hablar con Aster
@@ -426,8 +428,8 @@ export default function Header() {
         <div
           className={`overflow-hidden border-t border-gray-100 bg-white transition-[max-height,opacity] duration-300 ease-in-out xl:hidden ${
             menuOpen
-              ? 'max-h-[56rem] opacity-100'
-              : 'max-h-0 opacity-0'
+              ? 'max-h-[calc(100dvh-72px)] overflow-y-auto opacity-100 sm:max-h-[calc(100dvh-96px)]'
+              : 'hidden max-h-0 opacity-0'
           }`}
         >
           <nav
@@ -466,7 +468,7 @@ export default function Header() {
                     className={`overflow-hidden transition-[max-height,opacity] duration-300 ${
                       mobileServicesOpen
                         ? 'max-h-64 opacity-100'
-                        : 'max-h-0 opacity-0'
+                        : 'hidden max-h-0 opacity-0'
                     }`}
                   >
                     <div className="flex flex-col pl-4">
@@ -556,7 +558,7 @@ export default function Header() {
                   onClick={
                     handleOpenLogin
                   }
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-aster-green bg-white px-6 py-3 text-base font-semibold text-aster-green"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-aster-green bg-white font-semibold text-aster-green gap-1.5 px-4 py-2 text-[13px]"
                 >
                   <LogIn size={18} />
                   Iniciar sesión
@@ -566,7 +568,7 @@ export default function Header() {
             <a
               href="https://wa.me/56983480052"
               onClick={handleLinkClick}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-aster-green px-6 py-3 text-base font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-aster-green font-semibold text-white gap-1.5 px-4 py-2 text-[13px]"
             >
               <WhatsAppIcon size={19} />
               Hablar con Aster

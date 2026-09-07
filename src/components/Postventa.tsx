@@ -1,59 +1,141 @@
-import { CheckCircle2, Circle } from 'lucide-react';
+import {
+  CheckCircle2,
+  MessageCircle,
+  Settings2,
+  ShoppingBag,
+  Wrench,
+} from 'lucide-react';
+
 import Container from '@/components/Container';
-import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 
-const statuses = [
-  { label: 'Recibido', active: true, done: true },
-  { label: 'En revisión', active: true, done: true },
-  { label: 'En proceso', active: true, done: false },
-  { label: 'Solucionado', active: false, done: false },
+const tags = [
+  'App',
+  'POS',
+  'Mercado Pago',
+  'Inventario',
+  'Usuarios',
+  'Configuración',
+  'Reportes',
+  'Equipamiento',
 ];
-
-const categories = ['App', 'POS', 'Lectores', 'Inventario', 'Usuarios', 'Configuración', 'Reportes', 'Equipamiento'];
 
 export default function Postventa() {
   return (
-    <section className="py-24 sm:py-28 bg-white">
+    <section className="bg-white py-16 sm:py-20">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="mx-auto max-w-6xl">
           <Reveal>
-            <SectionHeading
-              title="No desaparecemos después de implementar."
-              align="left"
-            />
-            <p className="mt-5 text-base sm:text-lg text-aster-gray leading-relaxed">
-              El soporte de Aster acompaña a tu operación en el día a día. Cada solicitud queda registrada y con seguimiento visible.
+            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-aster-green">
+              Soporte Aster
             </p>
-            <div className="flex flex-wrap gap-2.5 mt-6">
-              {categories.map((cat) => (
-                <span key={cat} className="rounded-full bg-aster-soft border border-gray-200 text-aster-black text-sm font-medium px-4 py-2">
-                  {cat}
+
+            <h2 className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-aster-black">
+              Implementamos, acompañamos y respondemos.
+            </h2>
+
+            <p className="mt-5 max-w-5xl text-base leading-relaxed text-aster-gray sm:text-lg lg:text-[1.65rem] lg:leading-relaxed">
+              No quedas solo después de implementar. Aster registra,
+              da seguimiento y responde a solicitudes operativas para que tu
+              negocio siga funcionando con más continuidad y claridad.
+            </p>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-aster-black"
+                >
+                  {tag}
                 </span>
               ))}
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
-            <div className="rounded-[26px] bg-aster-soft border border-gray-200/70 p-8 shadow-card">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-sm font-bold text-aster-black">Ticket</span>
-                <span className="rounded-full bg-aster-black text-white text-sm font-bold px-4 py-1.5">AST-000348</span>
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-aster-gray mb-4">Estado</p>
-              <div className="space-y-4">
-                {statuses.map((status) => (
-                  <div key={status.label} className="flex items-center gap-3">
-                    {status.done ? (
-                      <CheckCircle2 size={22} className="text-aster-green shrink-0" />
-                    ) : (
-                      <Circle size={22} className={status.active ? 'text-aster-green shrink-0' : 'text-gray-300 shrink-0'} />
-                    )}
-                    <span className={`text-[15px] font-semibold ${status.done || status.active ? 'text-aster-black' : 'text-gray-400'}`}>
-                      {status.label}
+          <Reveal delay={120}>
+            <div className="mt-8 rounded-[28px] border border-gray-200 bg-[#fafbf8] p-6 shadow-card sm:p-7">
+              <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+                <div>
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-xl font-extrabold text-aster-black">
+                      Ticket activo
+                    </p>
+
+                    <span className="inline-flex rounded-full bg-black px-4 py-2 text-sm font-extrabold text-white">
+                      AST-000348
                     </span>
                   </div>
-                ))}
+
+                  <div className="mt-6 space-y-4">
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-aster-greenSoft text-aster-green">
+                        <CheckCircle2 size={18} />
+                      </span>
+                      <div>
+                        <p className="font-bold text-aster-black">Recibido</p>
+                        <p className="text-sm text-aster-gray">
+                          Solicitud registrada correctamente.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-aster-greenSoft text-aster-green">
+                        <CheckCircle2 size={18} />
+                      </span>
+                      <div>
+                        <p className="font-bold text-aster-black">En revisión</p>
+                        <p className="text-sm text-aster-gray">
+                          Se está validando causa y alcance.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-aster-green text-aster-green">
+                        <Wrench size={17} />
+                      </span>
+                      <div>
+                        <p className="font-bold text-aster-black">En proceso</p>
+                        <p className="text-sm text-aster-gray">
+                          Seguimiento visible hasta el cierre.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-[20px] bg-white p-4 shadow-sm">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-aster-greenSoft text-aster-green">
+                      <Settings2 size={20} />
+                    </span>
+                    <p className="mt-3 text-sm font-bold text-aster-black">
+                      Seguimiento visible
+                    </p>
+                  </div>
+
+                  <div className="rounded-[20px] bg-white p-4 shadow-sm">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-aster-greenSoft text-aster-green">
+                      <ShoppingBag size={20} />
+                    </span>
+                    <p className="mt-3 text-sm font-bold text-aster-black">
+                      Continuidad operativa
+                    </p>
+                  </div>
+
+                  <div className="rounded-[20px] bg-white p-4 shadow-sm sm:col-span-2">
+                    <a
+                      href="#contacto"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-aster-green px-6 py-3.5 text-[15px] font-bold text-white transition-colors duration-200 hover:bg-aster-greenDark"
+                    >
+                      <MessageCircle size={17} />
+                      Hablar con Aster
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>

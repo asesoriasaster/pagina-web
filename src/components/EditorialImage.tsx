@@ -10,15 +10,15 @@ interface EditorialImageProps {
 
 export default function EditorialImage({ src, alt, title, subtitle, position = 'left' }: EditorialImageProps) {
   return (
-    <div className="relative mt-12 overflow-hidden rounded-[28px] border border-gray-100 bg-aster-black shadow-card aspect-[16/10] sm:aspect-[16/9]">
-      <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent" />
-      <div className={`absolute inset-y-0 flex items-center p-6 sm:p-10 lg:p-14 ${position === 'right' ? 'right-0 justify-end' : 'left-0'}`}>
-        <div className={`max-w-[min(34rem,78vw)] ${position === 'right' ? 'text-right' : ''}`}>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.12] tracking-tight text-white [&_strong]:text-aster-green">
+    <div className="relative mt-8 overflow-hidden rounded-2xl bg-aster-black sm:rounded-3xl">
+      <img src={src} alt={alt} className="h-56 w-full object-cover object-center sm:absolute sm:inset-0 sm:h-full" loading="lazy" decoding="async" />
+      <div className={`pointer-events-none absolute inset-0 hidden sm:block ${position === 'right' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-black/80 via-black/45 to-black/10`} />
+      <div className={`relative flex p-5 sm:min-h-[360px] sm:items-center sm:p-8 lg:min-h-[420px] lg:p-10 ${position === 'right' ? 'sm:justify-end' : ''}`}>
+        <div className={`max-w-xl ${position === 'right' ? 'sm:text-right' : ''}`}>
+          <h3 className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl [&_strong]:text-[#A3E65A]">
             {title}
           </h3>
-          <p className="mt-4 max-w-xl text-sm sm:text-base lg:text-lg font-medium leading-relaxed text-white/95 [&_strong]:text-aster-green">
+          <p className="mt-3 text-base font-medium leading-relaxed text-white/95 sm:text-lg [&_strong]:text-[#A3E65A]">
             {subtitle}
           </p>
         </div>

@@ -31,16 +31,6 @@ export const navLinks = [
 ];
 
 export const serviceDropdown = [
-  {
-    label: 'Descargas',
-    href: '#descargas',
-  },
-  {
-    label: 'Cursos y capacitaciones',
-    href: '#cursos',
-  },
-  {
-    label: 'Páginas web',
-    href: '#paginas-web',
-  },
+  { label: 'Cursos y capacitaciones', href: '#cursos' },
+  { label: 'Otros servicios', href: '#otros-servicios' },
 ];

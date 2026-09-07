@@ -1,74 +1,59 @@
-import { Ban, Edit3, ShoppingCart, Tag, Trash2, Wallet } from 'lucide-react';
+import { Eye, ShieldCheck } from 'lucide-react';
+
 import Container from '@/components/Container';
 import Reveal from '@/components/Reveal';
 
-const events = [
-  { time: '15:32', action: 'Venta registrada', user: 'Vendedor 1', icon: ShoppingCart },
-  { time: '15:48', action: 'Descuento aplicado', user: 'Vendedor 2', icon: Tag },
-  { time: '16:03', action: 'Ajuste de inventario', user: 'Administrador', icon: Edit3 },
-  { time: '16:18', action: 'Producto eliminado', user: 'Vendedor 1', icon: Trash2 },
-  { time: '17:12', action: 'Salida de caja', user: 'Administrador', icon: Wallet },
-];
-
-const causes = [
-  'Robo hormiga',
-  'Diferencias de inventario',
-  'Pérdidas internas',
-  'Errores de registro',
-  'Productos sin registrar',
-  'Diferencias de caja',
-  'Productos vencidos',
-];
-
 export default function LossControl() {
   return (
-    <section className="py-24 sm:py-28 bg-white">
+    <section className="overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="mx-auto max-w-6xl">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full bg-aster-greenSoft text-aster-green text-sm font-semibold px-4 py-1.5 mb-6">
-              <Ban size={14} /> Control y prevención de pérdidas
+            <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-aster-greenSoft px-4 py-2 text-sm font-bold text-aster-green sm:px-5 sm:text-base">
+              <ShieldCheck size={19} className="shrink-0" />
+              <span className="truncate sm:whitespace-normal">
+                Control y prevención de pérdidas
+              </span>
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold leading-[1.15] tracking-tight text-aster-black">
+          </Reveal>
+
+          <Reveal delay={60}>
+            <h2 className="mt-7 max-w-5xl text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.035em] text-aster-black">
               Las pérdidas pequeñas también se acumulan.
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-aster-gray leading-relaxed">
-              Robo hormiga, diferencias de inventario, pérdidas internas, errores, productos sin registrar, diferencias de caja o productos vencidos: por separado parecen pequeños, pero se acumulan con el tiempo.
-            </p>
+          </Reveal>
 
-            <div className="flex flex-wrap gap-2.5 mt-6">
-              {causes.map((cause) => (
-                <span key={cause} className="rounded-full bg-aster-soft border border-gray-200 text-aster-black text-sm font-medium px-4 py-2">
-                  {cause}
-                </span>
-              ))}
-            </div>
-
-            <p className="mt-8 text-2xl sm:text-[1.7rem] font-extrabold text-aster-green leading-snug">
-              Más trazabilidad. Menos espacios ciegos.
+          <Reveal delay={100}>
+            <p className="mt-6 max-w-6xl text-base leading-relaxed text-aster-gray sm:text-lg lg:text-xl">
+              Robo hormiga, diferencias de inventario, pérdidas internas,
+              errores, productos sin registrar, diferencias de caja o
+              productos vencidos pueden parecer pequeños por separado, pero
+              se acumulan con el tiempo.
             </p>
           </Reveal>
 
-          <Reveal delay={150}>
-            <div className="rounded-[26px] bg-aster-soft border border-gray-200/70 p-6 sm:p-8 shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-wide text-aster-gray mb-5">Historial de movimientos</p>
-              <ol className="relative border-l border-gray-300 ml-3">
-                {events.map((event, i) => {
-                  const EventIcon = event.icon;
-                  return (
-                    <li key={i} className="mb-7 last:mb-0 ml-6">
-                      <span className="absolute -left-[19px] flex items-center justify-center h-9 w-9 rounded-full bg-aster-greenSoft text-aster-green ring-4 ring-aster-soft">
-                        <EventIcon size={16} />
-                      </span>
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-[15px] font-semibold text-aster-black">{event.action}</p>
-                        <span className="text-xs font-medium text-aster-gray shrink-0">{event.time}</span>
-                      </div>
-                      <p className="text-sm text-aster-gray mt-0.5">{event.user}</p>
-                    </li>
-                  );
-                })}
-              </ol>
+          {/*
+            Se eliminaron los botones/pastillas grises.
+            El texto superior ya comunica esos conceptos sin repetirlos.
+          */}
+
+          <Reveal delay={140}>
+            <div className="mt-9 grid gap-4 rounded-[24px] border border-aster-green/15 bg-aster-greenSoft/55 p-5 sm:grid-cols-[auto_1fr] sm:items-center sm:p-6 lg:mt-10">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-aster-green shadow-sm">
+                <Eye size={22} />
+              </span>
+
+              <div className="min-w-0">
+                <h3 className="text-xl font-extrabold leading-tight text-aster-black sm:text-2xl">
+                  Más trazabilidad. Menos espacios ciegos.
+                </h3>
+
+                <p className="mt-2 max-w-4xl text-sm leading-relaxed text-aster-gray sm:text-base">
+                  Aster ayuda a mantener registro de movimientos relevantes
+                  para que puedas detectar diferencias y entender mejor qué
+                  ocurrió en tu operación.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

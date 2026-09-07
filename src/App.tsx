@@ -1,20 +1,15 @@
+import { visualPreview } from '@/lib/supabase';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import TwoAreas from '@/components/TwoAreas';
 import PainPoints from '@/components/PainPoints';
 import AppModules from '@/components/AppModules';
 import LossControl from '@/components/LossControl';
 import SmartAlerts from '@/components/SmartAlerts';
-import DataToAction from '@/components/DataToAction';
-import Implementation from '@/components/Implementation';
 import InitialInventory from '@/components/InitialInventory';
 import Plans from '@/components/Plans';
 import Empresas from '@/components/Empresas';
-import Aster360 from '@/components/Aster360';
-import Descargas from '@/components/Descargas';
 import Cursos from '@/components/Cursos';
 import PaginasWeb from '@/components/PaginasWeb';
-import Methodology from '@/components/Methodology';
 import Postventa from '@/components/Postventa';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
@@ -26,26 +21,25 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <TwoAreas />
         <PainPoints />
         <AppModules />
         <LossControl />
         <SmartAlerts />
-        <DataToAction />
-        <Implementation />
         <InitialInventory />
         <Plans />
         <Empresas />
-        <Aster360 />
-        <Descargas />
         <Cursos />
         <PaginasWeb />
-        <Methodology />
         <Postventa />
         <About />
         <Contact />
       </main>
       <Footer />
+      {visualPreview && (
+        <div role="status" className="pointer-events-none fixed inset-x-3 bottom-3 z-[100] mx-auto max-w-md rounded-xl bg-aster-black px-4 py-2 text-center text-sm text-white shadow-lg">
+          Vista previa local · Formularios y acceso sin conexión
+        </div>
+      )}
     </div>
   );
 }

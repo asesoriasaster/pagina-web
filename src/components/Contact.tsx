@@ -1,3 +1,4 @@
+import { visualPreview } from '@/lib/supabase';
 import {
   useState,
   type FormEvent,
@@ -124,6 +125,11 @@ export default function Contact() {
     event: FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
+
+    if (visualPreview) {
+      setSubmitError('Vista previa local: no se envían consultas desde esta copia.');
+      return;
+    }
 
     const nextErrors = validate();
 

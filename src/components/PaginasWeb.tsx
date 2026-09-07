@@ -1,93 +1,109 @@
-import { Globe, ShoppingCart } from 'lucide-react';
+import {
+  Globe,
+  Megaphone,
+  ShoppingCart,
+} from 'lucide-react';
 
 import Container from '@/components/Container';
-import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
-import WhatsAppIcon from '@/components/WhatsAppIcon';
 
-interface WebPlan {
-  icon: typeof Globe;
-  name: string;
-  price: string;
-  description: string;
-}
-
-const webPlans: WebPlan[] = [
+const services = [
   {
     icon: Globe,
-    name: 'Página web corporativa',
+    name: 'Web corporativa',
     price: '$105.000',
+    note: 'Hosting y dominio',
     description:
-      'Una presencia profesional para presentar tu negocio, servicios e información de contacto.',
+      'Presenta tu negocio, servicios y canales de contacto de forma profesional.',
   },
   {
     icon: ShoppingCart,
-    name: 'Página web con carrito de compra',
+    name: 'Web con carrito',
     price: '$120.000',
+    note: 'Hosting y dominio',
     description:
-      'Una solución web para presentar productos y habilitar una experiencia de compra online.',
+      'Muestra productos y habilita una experiencia de compra online.',
+  },
+  {
+    icon: Megaphone,
+    name: 'Estrategia RRSS',
+    price: '$300.000',
+    note: 'Plan comercial',
+    description:
+      'Ordena contenido, difusión y presencia digital para conectar con clientes.',
   },
 ];
 
 export default function PaginasWeb() {
   return (
     <section
-      id="paginas-web"
-      className="scroll-mt-36 bg-aster-soft py-24 sm:py-28 sm:scroll-mt-48"
+      id="otros-servicios"
+      className="bg-aster-soft py-12 sm:py-14 lg:py-16"
     >
       <Container>
-        <SectionHeading
-          title="Páginas web para tu negocio"
-          subtitle="Diseñamos soluciones web simples, claras y adaptadas a las necesidades de cada negocio."
-        />
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-aster-green sm:text-xs">
+            Otros servicios
+          </p>
 
-        <div className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
-          {webPlans.map((plan, index) => {
-            const Icon = plan.icon;
+          <h2 className="mt-2 text-[clamp(1.85rem,3.7vw,3.25rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-aster-black">
+            Servicios para complementar Aster.
+          </h2>
+
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-aster-gray sm:text-base">
+            Soluciones concretas para fortalecer presencia y gestión comercial.
+          </p>
+        </div>
+
+        <div className="mt-7 grid gap-2.5 sm:grid-cols-3 sm:gap-3">
+          {services.map((service, index) => {
+            const Icon = service.icon;
 
             return (
-              <Reveal key={plan.name} delay={index * 100}>
-                <div className="flex h-full flex-col rounded-[26px] bg-white p-8 shadow-card transition-shadow duration-300 hover:shadow-cardHover">
-                  <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-aster-greenSoft text-aster-green">
-                    <Icon size={22} />
+              <Reveal
+                key={service.name}
+                delay={(index % 3) * 40}
+              >
+                <article className="flex h-full items-start gap-3 rounded-[18px] bg-white p-4 shadow-sm sm:block sm:p-5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-aster-greenSoft text-aster-green sm:h-11 sm:w-11">
+                    <Icon size={20} />
                   </span>
 
-                  <h3 className="text-lg font-bold leading-snug text-aster-black">
-                    {plan.name}
-                  </h3>
+                  <div className="min-w-0 flex-1 sm:mt-3">
+                    <h3 className="text-base font-extrabold leading-tight text-aster-black sm:text-lg">
+                      {service.name}
+                    </h3>
 
-                  <p className="mt-3 text-2xl font-extrabold text-aster-black">
-                    {plan.price}{' '}
-                    <span className="text-sm font-semibold text-aster-gray">
-                      · IVA incluido
-                    </span>
-                  </p>
+                    <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2">
+                      <p className="text-xl font-extrabold text-aster-black sm:text-2xl">
+                        {service.price}
+                      </p>
 
-                  <p className="mt-4 text-[14px] leading-relaxed text-aster-gray">
-                    {plan.description}
-                  </p>
+                      <span className="text-[10px] font-semibold text-aster-gray sm:text-xs">
+                        IVA incluido
+                      </span>
+                    </div>
 
-                  <div className="mt-auto pt-6">
+                    <p className="mt-1 text-[10px] font-bold text-aster-green sm:text-xs">
+                      {service.note}
+                    </p>
+
+                    <p className="mt-2 text-[11px] leading-relaxed text-aster-gray sm:text-xs lg:text-sm">
+                      {service.description}
+                    </p>
+
                     <a
-                      href="https://wa.me/56983480052"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-aster-green px-6 py-3.5 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-aster-greenDark"
+                      href="#contacto"
+                      className="mt-3 inline-flex items-center text-[11px] font-bold text-aster-green hover:text-aster-greenDark sm:text-xs"
                     >
-                      <WhatsAppIcon size={18} />
-                      Hablar con Aster
+                      Cotizar / conocer más →
                     </a>
                   </div>
-                </div>
+                </article>
               </Reveal>
             );
           })}
         </div>
-
-        <Reveal delay={200}>
-          <p className="mx-auto mt-8 max-w-xl text-center text-sm text-aster-gray">
-            Incluye hosting y dominio según las condiciones definidas para
-            cada proyecto.
-          </p>
-        </Reveal>
       </Container>
     </section>
   );
