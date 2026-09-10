@@ -31,11 +31,11 @@ export default function PlanModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm animate-fadeUp"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-3 backdrop-blur-sm animate-fadeUp sm:p-4"
       onClick={onClose}
     >
       <div
-        className="relative max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-[28px] bg-white p-6 shadow-pop sm:p-9"
+        className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[24px] bg-white p-5 shadow-pop sm:rounded-[28px] sm:p-8"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -47,7 +47,7 @@ export default function PlanModal({
           <X size={18} />
         </button>
 
-        <h3 className="pr-8 text-2xl font-extrabold text-aster-black">
+        <h3 className="pr-10 text-2xl font-extrabold text-aster-black">
           {plan.name}
         </h3>
 
@@ -55,46 +55,51 @@ export default function PlanModal({
           {plan.subtitle}
         </p>
 
-        <p className="mt-5 text-sm leading-relaxed text-aster-gray">
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-aster-gray">
           {plan.modalIntro}
         </p>
 
         {plan.modalSections.map((section) => {
-          const esOpcionesInicia =
+          const esOpcionesContratacion =
             (plan.id === 'inicia' || plan.id === 'avanzado') &&
             section.heading === 'Opciones de contratación' &&
             plan.options &&
             plan.options.length > 0;
 
-          if (esOpcionesInicia) {
+          if (esOpcionesContratacion) {
             return (
-              <div key={section.heading} className="mt-7">
+              <div
+                key={section.heading}
+                className="mt-8"
+              >
                 <h4 className="text-sm font-bold uppercase tracking-wide text-aster-green">
                   {section.heading}
                 </h4>
 
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <div className="mt-4 grid gap-3 md:grid-cols-3">
                   {plan.options!.map((option) => (
                     <div
                       key={option.label}
-                      className="relative rounded-2xl border border-aster-green/25 bg-white p-4 shadow-sm"
+                      className="flex min-h-[180px] flex-col rounded-2xl border border-aster-green/25 bg-white p-5 shadow-sm"
                     >
-                      {option.saving && (
-                        <span className="absolute right-3 top-3 rounded-full bg-aster-green px-2.5 py-1 text-[10.5px] font-extrabold text-white">
-                          {option.saving}
-                        </span>
-                      )}
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-aster-green">
+                          {option.label}
+                        </p>
 
-                      <p className="pr-16 text-[11px] font-extrabold uppercase tracking-[0.12em] text-aster-green">
-                        {option.label}
-                      </p>
+                        {option.saving && (
+                          <span className="shrink-0 rounded-full bg-aster-green px-2.5 py-1 text-[10.5px] font-extrabold text-white">
+                            {option.saving}
+                          </span>
+                        )}
+                      </div>
 
-                      <p className="mt-3 text-[19px] font-extrabold leading-tight tracking-tight text-aster-black">
+                      <p className="mt-4 text-[21px] font-extrabold leading-tight tracking-tight text-aster-black">
                         {option.price}
                       </p>
 
                       {option.detail && (
-                        <p className="mt-2 text-[11.5px] font-medium leading-relaxed text-aster-gray">
+                        <p className="mt-3 text-[12px] font-medium leading-relaxed text-aster-gray">
                           {option.detail}
                         </p>
                       )}
@@ -106,7 +111,10 @@ export default function PlanModal({
           }
 
           return (
-            <div key={section.heading} className="mt-7">
+            <div
+              key={section.heading}
+              className="mt-7"
+            >
               <h4 className="text-sm font-bold uppercase tracking-wide text-aster-green">
                 {section.heading}
               </h4>
@@ -164,7 +172,7 @@ export default function PlanModal({
         })()}
 
         {plan.modalFooter && (
-          <p className="mt-6 rounded-xl border border-aster-green/15 bg-aster-greenSoft p-4 text-[13px] font-semibold leading-relaxed text-aster-black">
+          <p className="mt-7 rounded-2xl border border-aster-green/15 bg-aster-greenSoft p-5 text-[13px] font-semibold leading-relaxed text-aster-black">
             {plan.modalFooter}
           </p>
         )}

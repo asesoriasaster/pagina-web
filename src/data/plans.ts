@@ -1,4 +1,4 @@
-export interface PlanOption {
+﻿export interface PlanOption {
   label: string;
   price: string;
   detail?: string;
@@ -72,48 +72,81 @@ export const plans: Plan[] = [
     options: [
       {
         label: 'Mensual',
-        price: 'Desde $29.990/mes',
-        detail: 'IVA incluido',
+        price: '$29.990/mes',
+        detail: 'Pago mensual · IVA incluido',
       },
       {
         label: 'Pack 3 meses',
-        price: 'Desde $24.990 mensual',
-        detail: 'IVA incluido',
-        saving: '17% OFF',
+        price: '$74.970 total',
+        detail:
+          'Equivale a $24.990/mes · IVA incluido',
+        saving: 'Ahorras $15.000',
       },
       {
         label: 'Pack 6 meses',
-        price: 'Desde $20.990 mensual',
-        detail: 'IVA incluido',
-        saving: '30% OFF',
+        price: '$125.940 total',
+        detail:
+          'Equivale a $20.990/mes · IVA incluido',
+        saving: 'Ahorras $54.000',
       },
     ],
 
     modalIntro:
-      'La forma más simple de comenzar a ordenar y controlar tu negocio con Aster.',
+      'Una solución simple para comenzar a digitalizar tu negocio, centralizar la información y tener mayor control sobre ventas, inventario, caja y clientes.',
 
     modalSections: [
       {
-        heading: 'Incluye',
+        heading: 'Gestión de tu negocio',
         items: [
-          'Ventas, inventario, caja y clientes',
-          'Dashboard y reportes básicos',
+          'Ventas y punto de venta',
+          'Inventario y movimientos de productos',
+          'Control de caja y operaciones',
+          'Gestión de clientes y contactos',
+          'Dashboard con información del negocio',
+          'Reportes básicos',
           'Hasta 5 usuarios',
-          'Capacitación y soporte inicial',
+        ],
+      },
+      {
+        heading: 'Carga de información',
+        items: [
+          'Carga masiva de productos e inventario',
+          'Importación de información para facilitar la puesta en marcha',
+          'Carga de compras y mercadería',
+          'Digitalización de facturas de compra para agilizar el ingreso de productos y alimentar el inventario',
+        ],
+      },
+      {
+        heading: 'Medios de pago e integraciones',
+        items: [
+          'Posibilidad de integración con Mercado Pago Point',
+          'Posibilidad de vinculación con otras soluciones POS compatibles',
+          'Integración de los medios de pago del negocio con la operación registrada en Aster',
+          'Centralización de información de ventas y pagos en un mismo ecosistema',
+        ],
+      },
+      {
+        heading: 'Implementación y acompañamiento',
+        items: [
+          'Configuración inicial de Aster App',
+          'Entrega de credenciales',
+          'Capacitación inicial',
+          'Soporte Aster',
+          'Hasta 5 usuarios incluidos',
         ],
       },
       {
         heading: 'Opciones de contratación',
         items: [
-          'Mensual: Desde $29.990/mes · IVA incluido',
-          'Pack 3 meses: Desde $24.990 mensual · 17% OFF · IVA incluido',
-          'Pack 6 meses: Desde $20.990 mensual · 30% OFF · IVA incluido',
+          'Mensual: $29.990/mes · IVA incluido',
+          'Pack 3 meses: $74.970 total · Equivale a $24.990/mes · Ahorras $15.000',
+          'Pack 6 meses: $125.940 total · Equivale a $20.990/mes · Ahorras $54.000',
         ],
       },
     ],
 
     modalFooter:
-      'Valores IVA incluido.',
+      'Los packs de 3 y 6 meses se pagan por adelantado. Al finalizar el período puedes renovar el pack para mantener el descuento o continuar con el plan mensual al valor vigente. Valores IVA incluido.',
   },
 
   {
@@ -127,12 +160,12 @@ export const plans: Plan[] = [
     featured: true,
 
     features: [
-      'Dashboard',
-      'Capacitación',
+      'Todo Aster App Inicia',
+      'Hasta 10 usuarios',
       'Manufacturación',
-      'Integración Mercado Pago',
-      'Módulo de gastos',
-      'Módulo de gestión de clientes',
+      'Gastos y gestión',
+      'Integraciones POS',
+      'Herramientas avanzadas',
     ],
 
     cta: 'Conocer Aster App Plus',
@@ -147,51 +180,92 @@ export const plans: Plan[] = [
       {
         label: 'Mensual',
         price: '$35.990/mes',
-        detail: 'IVA incluido',
+        detail: 'Pago mensual · IVA incluido',
       },
       {
         label: 'Pack 3 meses',
-        price: '$29.990 Mensual',
-        detail: 'IVA incluido',
-        saving: '17% OFF',
+        price: '$89.970 total',
+        detail:
+          'Equivale a $29.990/mes · IVA incluido',
+        saving: 'Ahorras $18.000',
       },
       {
         label: 'Pack 6 meses',
-        price: '$25.190 Mensual',
-        detail: 'IVA incluido',
-        saving: '30% OFF',
+        price: '$151.140 total',
+        detail:
+          'Equivale a $25.190/mes · IVA incluido',
+        saving: 'Ahorras $64.800',
       },
     ],
 
     modalIntro:
-      'Más herramientas para controlar y gestionar tu negocio con Aster.',
+      'Aster App Plus incorpora más herramientas para controlar, gestionar y conectar distintas áreas del negocio desde una misma plataforma.',
 
     modalSections: [
       {
-        heading: 'Incluye',
+        heading: 'Todo Aster App Inicia',
         items: [
-          '10 usuarios',
-          'Entrega de credenciales',
-          'Toma de inventario inicial',
-          'Capacitación del CRM',
+          'Ventas y punto de venta',
+          'Inventario y movimientos',
+          'Caja',
+          'Clientes y contactos',
           'Dashboard',
-          'Módulo Manufacturación',
+          'Reportes',
+          'Capacitación y soporte',
+        ],
+      },
+      {
+        heading: 'Gestión avanzada',
+        items: [
+          'Hasta 10 usuarios',
+          'Entrega y configuración de credenciales',
+          'Toma de inventario inicial',
+          'Módulo de Manufacturación',
           'Módulo de gastos',
-          'Módulo de gestión de clientes',
+          'Gestión avanzada de clientes',
+          'Herramientas adicionales de control y seguimiento',
+        ],
+      },
+      {
+        heading: 'Carga y digitalización',
+        items: [
+          'Carga masiva de productos e inventario',
+          'Importación masiva de información desde planillas u otros registros',
+          'Carga de compras y mercadería',
+          'Digitalización de facturas de compra para agilizar el ingreso de productos',
+          'Las compras registradas pueden alimentar y actualizar el inventario',
+        ],
+      },
+      {
+        heading: 'Integraciones de pago',
+        items: [
+          'Integración con Mercado Pago Point',
+          'Posibilidad de integración con otras soluciones POS compatibles',
+          'Conexión de medios de pago con la operación de Aster',
+          'Centralización de ventas, pagos e información operacional',
+        ],
+      },
+      {
+        heading: 'Más información para gestionar',
+        items: [
+          'Mayor visibilidad sobre la operación del negocio',
+          'Información de ventas, inventario, clientes y gastos en un mismo sistema',
+          'Trazabilidad de operaciones para conocer qué ocurrió, quién realizó la acción y cuándo',
+          'Información disponible para apoyar decisiones de compra, venta y gestión',
         ],
       },
       {
         heading: 'Opciones de contratación',
         items: [
           'Mensual: $35.990/mes · IVA incluido',
-          'Pack 3 meses: $29.990 mensual · 17% OFF · IVA incluido',
-          'Pack 6 meses: $25.190 mensual · 30% OFF · IVA incluido',
+          'Pack 3 meses: $89.970 total · Equivale a $29.990/mes · Ahorras $18.000',
+          'Pack 6 meses: $151.140 total · Equivale a $25.190/mes · Ahorras $64.800',
         ],
       },
     ],
 
     modalFooter:
-      'Valores IVA incluido.',
+      'Los packs de 3 y 6 meses se pagan por adelantado. Al finalizar el período puedes renovar el pack para mantener el descuento o continuar con el plan mensual al valor vigente. Valores IVA incluido.',
   },
 
   {
@@ -199,15 +273,15 @@ export const plans: Plan[] = [
     name: 'Plan Aster Avanzado',
 
     subtitle:
-      'CRM intermedio y diagnóstico comercial para llevar tu negocio al siguiente nivel.',
+      'Aster App Plus y diagnóstico comercial para llevar tu negocio al siguiente nivel.',
 
     features: [
-      'CRM intermedio para hasta 10 usuarios',
-      'Dashboard y módulo de manufacturación',
+      'Aster App Plus',
       'Diagnóstico comercial completo',
       '3 estrategias comerciales sugeridas',
       'Reportes semanales y mensuales',
-      'Informe final y acompañamiento',
+      'Informe final',
+      'Acompañamiento',
     ],
 
     cta: 'Conocer Aster Avanzado',
@@ -216,44 +290,55 @@ export const plans: Plan[] = [
       'El alcance y valor de Aster Avanzado se definen según las necesidades y objetivos de cada negocio.',
 
     modalIntro:
-      'Una solución personalizada que combina CRM intermedio y diagnóstico comercial para potenciar tu negocio.',
+      'Una solución personalizada que combina Aster App Plus con diagnóstico, análisis y acompañamiento comercial para detectar oportunidades y trabajar sobre ellas.',
 
     modalSections: [
       {
-        heading: 'Incluye CRM Intermedio',
+        heading: 'Tecnología y gestión',
         items: [
-          '10 usuarios incluidos',
+          'Aster App Plus',
+          'Hasta 10 usuarios',
           'Entrega de credenciales',
           'Toma de inventario inicial',
-          'Capacitación del CRM',
-          'Entrega del CRM intermedio',
+          'Capacitación de Aster App',
           'Dashboard',
-          'Módulo Manufacturación',
+          'Manufacturación',
+          'Módulo de gastos',
+          'Gestión de clientes',
+          'Integraciones y herramientas de control',
         ],
       },
       {
-        heading: 'Diagnóstico Comercial',
+        heading: 'Diagnóstico comercial',
         items: [
           'Estudio del negocio',
-          'Estudio y análisis del mercado y competencia',
-          'Entrega de 3 estrategias sugeridas',
-          'Reportes Semanales',
+          'Análisis comercial',
+          'Estudio de mercado y competencia',
+          'Identificación de problemas y oportunidades',
+          'Definición de prioridades comerciales',
+        ],
+      },
+      {
+        heading: 'Estrategias y seguimiento',
+        items: [
+          'Entrega de 3 estrategias sugeridas según la realidad del negocio',
+          'Reportes semanales',
           'Reportes mensuales',
           'Informe final',
-          'Acompañamiento',
+          'Acompañamiento durante el proceso',
         ],
       },
     ],
 
     modalProcess: [
-      'CRM',
+      'App',
       'Diagnóstico',
       'Estrategias',
       'Acompañamiento',
     ],
 
     modalFooter:
-      'Alcance y valor definidos según las necesidades y objetivos de cada negocio.',
+      'Aster Avanzado combina tecnología e intervención comercial. El alcance y valor se definen según las necesidades y objetivos de cada negocio.',
   },
 
   {
@@ -266,7 +351,7 @@ export const plans: Plan[] = [
     features: [
       'Todo Aster Avanzado',
       'Hasta 15 usuarios',
-      'Gastos y Balances',
+      'Gastos y balances',
       'Automatizaciones e integraciones',
       'Diagnóstico y estrategias',
       'Plan de Marketing Digital',
@@ -280,23 +365,37 @@ export const plans: Plan[] = [
       'El alcance y valor de Aster Pro se definen según las necesidades y objetivos de cada negocio.',
 
     modalIntro:
-      'Una solución personalizada que conecta gestión, estrategia comercial y marketing.',
+      'Una solución personalizada que conecta tecnología, gestión, estrategia comercial y marketing para trabajar distintas áreas del crecimiento del negocio.',
 
     modalSections: [
       {
         heading: 'Gestión avanzada',
         items: [
+          'Todo lo incluido en Aster Avanzado',
           'Aster App para hasta 15 usuarios',
           'Automatizaciones e integraciones',
           'Gastos, balances y seguimiento',
+          'Herramientas de gestión adaptadas a la operación',
         ],
       },
       {
-        heading: 'Estrategia y marketing',
+        heading: 'Estrategia comercial',
         items: [
-          'Diagnóstico y estrategias comerciales',
+          'Diagnóstico del negocio',
+          'Análisis comercial',
+          'Estrategias comerciales',
+          'Seguimiento de acciones',
+          'Medición y recomendaciones',
+        ],
+      },
+      {
+        heading: 'Marketing',
+        items: [
           'Plan de Marketing Digital',
-          'Campañas y publicidad en Meta',
+          'Meta Ads',
+          'Campañas publicitarias',
+          'Publicidad pagada en Meta incluida según alcance definido',
+          'Seguimiento de resultados',
         ],
       },
     ],
@@ -309,7 +408,7 @@ export const plans: Plan[] = [
     ],
 
     modalFooter:
-      'Alcance y valor definidos según las necesidades de cada negocio.',
+      'El alcance y valor de Aster Pro se definen según las necesidades, objetivos y realidad de cada negocio.',
   },
 
   {
@@ -321,7 +420,7 @@ export const plans: Plan[] = [
 
     features: [
       'Todo Aster Pro',
-      'Gastos y Balances',
+      'Gastos y balances',
       'Diagnóstico y estrategias',
       'Plan de Marketing Digital',
       'Publicidad pagada en Meta incluida',
@@ -336,24 +435,38 @@ export const plans: Plan[] = [
       'El alcance y valor de Aster Integral se definen según la realidad y necesidades de cada negocio.',
 
     modalIntro:
-      'La solución más completa de Aster para centralizar gestión, estrategia y presencia digital.',
+      'La solución más completa de Aster para conectar tecnología, gestión, estrategia comercial, marketing y presencia digital.',
 
     modalSections: [
       {
         heading: 'Solución integral',
         items: [
           'Todo lo incluido en Aster Pro',
+          'Tecnología y gestión',
+          'Diagnóstico y estrategia comercial',
+          'Marketing Digital',
+          'Publicidad',
           'Community Manager',
+        ],
+      },
+      {
+        heading: 'Gestión continua',
+        items: [
           'Gestión continua de redes sociales',
-          'Seguimiento y optimización',
+          'Seguimiento comercial',
+          'Seguimiento de acciones de marketing',
+          'Medición de resultados',
+          'Optimización según información y desempeño',
         ],
       },
       {
         heading: 'Todo conectado',
         items: [
           'Información para detectar oportunidades',
-          'Estrategias para actuar',
-          'Marketing para ejecutar y medir resultados',
+          'Estrategias para definir acciones',
+          'Tecnología para controlar la operación',
+          'Marketing para ejecutar y comunicar',
+          'Seguimiento para medir y mejorar',
         ],
       },
     ],
@@ -366,6 +479,6 @@ export const plans: Plan[] = [
     ],
 
     modalFooter:
-      'Alcance y valor definidos según la realidad y necesidades de cada negocio.',
+      'El alcance y valor de Aster Integral se definen según la realidad, necesidades y objetivos de cada negocio.',
   },
 ];

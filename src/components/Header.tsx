@@ -1,4 +1,4 @@
-import {
+﻿import {
   useEffect,
   useState,
 } from 'react';
@@ -23,6 +23,21 @@ import {
   serviceDropdown,
 } from '@/data/navigation';
 import { supabase } from '@/lib/supabase';
+
+const tickerItems = [
+  'ASTER 360',
+  'Aster App',
+  'Gestión Comercial',
+  'Inventario y Ventas',
+  'Páginas Web',
+  'Marketing Digital',
+  'Community Manager',
+  'Diagnóstico Comercial',
+  'Automatización',
+  'Integraciones POS',
+  'Capacitación',
+  'Soporte',
+];
 
 async function getPerfilWeb(
   userId: string,
@@ -64,6 +79,90 @@ function getNombreCompleto(
     .filter(Boolean)
     .join(' ')
     .trim();
+}
+
+function TickerAster() {
+  const renderItems = () =>
+    tickerItems.map((item) => (
+      <div
+        key={item}
+        className="flex shrink-0 items-center gap-5"
+      >
+        <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-white sm:text-[11px]">
+          {item}
+        </span>
+
+        <span
+          className="text-[10px] text-white/55"
+          aria-hidden="true"
+        >
+          {'\u2022'}
+        </span>
+      </div>
+    ));
+
+  return (
+    <>
+      <div
+        className="relative h-6 overflow-hidden border-t border-white/10 bg-aster-green sm:h-7"
+        aria-label="Soluciones y servicios ASTER"
+      >
+        <div className="absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-aster-green to-transparent sm:w-16" />
+        <div className="absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-aster-green to-transparent sm:w-16" />
+
+        <div className="flex h-full items-center overflow-hidden">
+          <div className="aster-ticker-track flex w-max min-w-max items-center">
+            <div className="flex shrink-0 items-center gap-5 pr-5">
+              {renderItems()}
+            </div>
+
+            <div
+              className="flex shrink-0 items-center gap-5 pr-5"
+              aria-hidden="true"
+            >
+              {renderItems()}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        {`
+          @keyframes asterTickerRight {
+            from {
+              transform: translateX(-50%);
+            }
+
+            to {
+              transform: translateX(0);
+            }
+          }
+
+          .aster-ticker-track {
+            animation: asterTickerRight 38s linear infinite;
+            will-change: transform;
+          }
+
+          .aster-ticker-track:hover {
+            animation-play-state: paused;
+          }
+
+          @media (max-width: 640px) {
+            .aster-ticker-track {
+              animation-duration: 46s;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .aster-ticker-track {
+              animation: none;
+              transform: none;
+            }
+          }
+        `}
+      </style>
+    </>
+  );
 }
 
 export default function Header() {
@@ -332,7 +431,6 @@ export default function Header() {
             </nav>
 
             <div className="ml-4 hidden shrink-0 items-center gap-2 md:flex">
-
               {!authLoading &&
                 (user ? (
                   <>
@@ -380,7 +478,7 @@ export default function Header() {
                     onClick={
                       handleOpenLogin
                     }
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-aster-green/30 bg-white font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft gap-1.5 px-4 py-2 text-[13px]"
+                    className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-aster-green/30 bg-white px-4 py-2 text-[13px] font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-greenSoft"
                   >
                     <LogIn size={16} />
                     Iniciar sesión
@@ -388,9 +486,9 @@ export default function Header() {
                 ))}
 
               <a
-                href="https://wa.me/56983480052"
+                href={PUBLIC_WHATSAPP_URL}
                 onClick={handleLinkClick}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-aster-green font-semibold text-white shadow-sm transition-all duration-200 hover:bg-aster-greenDark hover:shadow-cardHover gap-1.5 px-4 py-2 text-[13px]"
+                className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-aster-green px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-aster-greenDark hover:shadow-cardHover"
               >
                 <WhatsAppIcon size={17} />
                 Hablar con Aster
@@ -558,7 +656,7 @@ export default function Header() {
                   onClick={
                     handleOpenLogin
                   }
-                  className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-aster-green bg-white font-semibold text-aster-green gap-1.5 px-4 py-2 text-[13px]"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-aster-green bg-white px-4 py-2 text-[13px] font-semibold text-aster-green"
                 >
                   <LogIn size={18} />
                   Iniciar sesión
@@ -566,15 +664,17 @@ export default function Header() {
               ))}
 
             <a
-              href="https://wa.me/56983480052"
+              href={PUBLIC_WHATSAPP_URL}
               onClick={handleLinkClick}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-aster-green font-semibold text-white gap-1.5 px-4 py-2 text-[13px]"
+              className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-aster-green px-4 py-2 text-[13px] font-semibold text-white"
             >
               <WhatsAppIcon size={19} />
               Hablar con Aster
             </a>
           </nav>
         </div>
+
+        <TickerAster />
       </header>
 
       <LoginModal

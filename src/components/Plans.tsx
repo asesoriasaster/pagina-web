@@ -1,173 +1,308 @@
-import {
-  CheckCircle2,
-  Sparkles,
-} from 'lucide-react';
+import { useState } from 'react';
 
 import Container from '@/components/Container';
+import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
+import PlanModal from '@/components/PlanModal';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { plans, type Plan } from '@/data/plans';
 
-type Plan = {
-  name: string;
-  badge?: string;
-  featured?: boolean;
-  description: string;
-  price: string;
-  note?: string;
-  points: string[];
-};
+function getCardStyle(plan: Plan) {
+  if (plan.id === 'avanzado') {
+    return [
+      'border-2 border-aster-green',
+      'bg-gradient-to-b',
+      'from-aster-green/30',
+      'via-aster-green/15',
+      'to-white',
+      'shadow-[0_16px_38px_rgba(16,115,74,0.20)]',
+      'xl:-translate-y-3',
+    ].join(' ');
+  }
 
-const plans: Plan[] = [
-  {
-    name: 'Aster Inicia',
-    badge: 'Entrada',
-    description:
-      'Para comenzar a ordenar ventas, inventario y operación.',
-    price: '$29.990 / mes',
-    note: '15 días de prueba',
-    points: [
-      'Inventario y ventas',
-      'Contactos y control',
-    ],
-  },
-  {
-    name: 'CRM Avanzado',
-    badge: 'Recomendado',
-    featured: true,
-    description:
-      'Mayor control operativo y una visión comercial más profunda.',
-    price: 'Personalizado',
-    note: 'Según alcance y objetivos',
-    points: [
-      'Diagnóstico comercial',
-      'Gestión y seguimiento',
-    ],
-  },
-  {
-    name: 'Aster Pro',
-    description:
-      'Estrategia comercial y herramientas para impulsar el negocio.',
-    price: 'Personalizado',
-    note: 'Según etapa del negocio',
-    points: [
-      'Estrategia comercial',
-      'Marketing y crecimiento',
-    ],
-  },
-  {
-    name: 'Aster Integral',
-    description:
-      'Tecnología, estrategia y acompañamiento continuo.',
-    price: 'Personalizado',
-    note: 'Según necesidades',
-    points: [
-      'Gestión continua',
-      'Visión integral',
-    ],
-  },
-];
+  if (plan.id === 'integral') {
+    return [
+      'border border-aster-green/30',
+      'bg-gradient-to-b',
+      'from-aster-green/25',
+      'via-aster-greenSoft',
+      'to-white',
+      'shadow-[0_10px_26px_rgba(16,115,74,0.12)]',
+      'hover:-translate-y-1',
+      'hover:shadow-[0_14px_32px_rgba(16,115,74,0.16)]',
+    ].join(' ');
+  }
+
+  if (plan.id === 'pro') {
+    return [
+      'border border-aster-green/25',
+      'bg-gradient-to-b',
+      'from-aster-green/20',
+      'via-aster-greenSoft',
+      'to-white',
+      'shadow-[0_10px_26px_rgba(16,115,74,0.11)]',
+      'hover:-translate-y-1',
+      'hover:shadow-[0_14px_32px_rgba(16,115,74,0.15)]',
+    ].join(' ');
+  }
+
+  return [
+    'border border-aster-green/25',
+    'bg-gradient-to-b',
+    'from-aster-green/20',
+    'via-aster-greenSoft',
+    'to-white',
+    'shadow-[0_10px_26px_rgba(16,115,74,0.11)]',
+    'hover:-translate-y-1',
+    'hover:shadow-[0_14px_32px_rgba(16,115,74,0.15)]',
+  ].join(' ');
+}
 
 export default function Plans() {
+  const [activePlan, setActivePlan] =
+    useState<Plan | null>(null);
+
+  const appPlans = plans.slice(0, 2);
+  const servicePlans = plans.slice(2);
+
+  const renderPlanCard = (
+    plan: Plan,
+    index: number,
+    extraClass = '',
+  ) => (
+    <Reveal
+      key={plan.id}
+      delay={index * 80}
+      className={`h-full ${extraClass}`}
+    >
+      <article
+        className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 xl:p-6 ${getCardStyle(
+          plan,
+        )}`}
+      >
+        <div className="mb-4 flex min-h-[30px] flex-wrap items-center gap-2">
+          {plan.badge && (
+            <span className="inline-flex w-fit rounded-full bg-aster-green px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm">
+              {plan.badge}
+            </span>
+          )}
+
+          {plan.highlight && (
+            <span className="inline-flex w-fit rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-aster-green shadow-sm">
+              {plan.highlight}
+            </span>
+          )}
+        </div>
+
+        <h3 className="text-xl font-extrabold text-aster-black">
+          {plan.name}
+        </h3>
+
+        <p className="mt-1.5 min-h-[62px] text-[14px] font-medium leading-relaxed text-aster-gray">
+          {plan.subtitle}
+        </p>
+
+        {plan.priceMessage ? (
+          <div className="mt-6 flex flex-1 border-b border-aster-green/20 pb-5">
+            <div className="flex flex-1 items-center rounded-2xl border border-aster-green/20 bg-white/85 p-5 shadow-sm">
+              <div>
+                <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
+                  Plan personalizado
+                </p>
+
+                <p className="mt-3 text-[15px] font-semibold leading-relaxed text-aster-black">
+                  {plan.priceMessage}
+                </p>
+
+                <p className="mt-4 text-xs font-medium leading-relaxed text-aster-gray">
+                  Conversemos para definir el alcance
+                  adecuado para tu negocio.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-6 border-b border-aster-green/20 pb-5">
+            <div>
+              {plan.precededBy && (
+                <p className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-aster-green">
+                  {plan.precededBy}
+                </p>
+              )}
+
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-3xl font-extrabold tracking-tight text-aster-black">
+                  {plan.pricePrimary}
+                </span>
+
+                {plan.priceUnit && (
+                  <span className="text-sm font-semibold text-aster-gray">
+                    {plan.priceUnit}
+                  </span>
+                )}
+              </div>
+
+              {plan.pricePrimaryLabel && (
+                <p className="mt-1 text-xs font-semibold leading-relaxed text-aster-gray">
+                  {plan.pricePrimaryLabel}
+                </p>
+              )}
+
+              {plan.priceSecondary && (
+                <p className="mt-3 text-[12.5px] font-semibold leading-relaxed text-aster-black">
+                  {plan.priceSecondary}
+                </p>
+              )}
+
+              {plan.priceSecondaryLabel && (
+                <p className="text-[12px] font-medium leading-relaxed text-aster-gray">
+                  {plan.priceSecondaryLabel}
+                </p>
+              )}
+            </div>
+
+            {plan.continuityPrice && (
+              <div
+                className={`mt-5 rounded-2xl border-2 p-4 ${
+                  plan.featured
+                    ? 'border-aster-green bg-aster-green text-white shadow-[0_10px_22px_rgba(16,115,74,0.18)]'
+                    : 'border-aster-green/35 bg-white/95 shadow-sm'
+                }`}
+              >
+                <p
+                  className={`text-[10.5px] font-extrabold uppercase tracking-[0.14em] ${
+                    plan.featured
+                      ? 'text-white/80'
+                      : 'text-aster-green'
+                  }`}
+                >
+                  {plan.continuityTitle}
+                </p>
+
+                <div className="mt-1 flex items-baseline gap-1.5">
+                  <span
+                    className={`text-[28px] font-extrabold tracking-tight ${
+                      plan.featured
+                        ? 'text-white'
+                        : 'text-aster-green'
+                    }`}
+                  >
+                    {plan.continuityPrice}
+                  </span>
+
+                  {plan.continuityUnit && (
+                    <span
+                      className={`text-sm font-bold ${
+                        plan.featured
+                          ? 'text-white/85'
+                          : 'text-aster-green'
+                      }`}
+                    >
+                      {plan.continuityUnit}
+                    </span>
+                  )}
+                </div>
+
+                {plan.continuityDetail && (
+                  <p
+                    className={`mt-0.5 text-[11.5px] font-semibold ${
+                      plan.featured
+                        ? 'text-white/75'
+                        : 'text-aster-gray'
+                    }`}
+                  >
+                    {plan.continuityDetail}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="mt-auto flex flex-col gap-2.5 pt-6">
+          <a
+            href="https://wa.me/56983480052"
+            className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-all duration-200 ${
+              plan.featured
+                ? 'bg-aster-green text-white shadow-sm hover:bg-aster-greenDark hover:shadow-[0_10px_20px_rgba(16,115,74,0.18)]'
+                : 'bg-aster-black text-white hover:bg-black'
+            }`}
+          >
+            <WhatsAppIcon size={17} />
+            Hablar con Aster
+          </a>
+
+          <button
+            type="button"
+            onClick={() =>
+              setActivePlan(plan)
+            }
+            className="inline-flex items-center justify-center rounded-full border border-aster-green/30 bg-white/75 px-5 py-3 text-[14px] font-semibold text-aster-green transition-all duration-200 hover:border-aster-green hover:bg-aster-green hover:text-white hover:shadow-[0_7px_16px_rgba(16,115,74,0.14)]"
+          >
+            {plan.cta}
+          </button>
+        </div>
+      </article>
+    </Reveal>
+  );
+
   return (
     <section
       id="planes"
-      className="bg-white py-12 sm:py-14 lg:py-16"
+      className="bg-white py-24 sm:py-28"
     >
       <Container>
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-[clamp(1.9rem,3.8vw,3.4rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-aster-black">
-            Planes para cada etapa de tu negocio.
-          </h2>
+        <SectionHeading
+          title="Elige el nivel de Aster que necesita tu negocio."
+        />
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-aster-gray sm:text-base">
-            Compara lo esencial y conversemos para definir la alternativa adecuada.
-          </p>
+        <div className="mt-16 grid items-start gap-6 xl:grid-cols-[2fr_3fr] xl:gap-5">
+          {/* ASTER APP: dos tarjetas compactas */}
+          <div className="grid items-stretch gap-6 sm:grid-cols-2 xl:gap-5">
+            {appPlans.map((plan, index) =>
+              renderPlanCard(plan, index),
+            )}
+          </div>
+
+          {/* PLANES ASTER: tres tarjetas iguales entre sí */}
+          <div className="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3 xl:gap-5">
+            {servicePlans.map((plan, index) =>
+              renderPlanCard(
+                plan,
+                index + appPlans.length,
+                index === servicePlans.length - 1
+                  ? 'sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc(50%-0.75rem)] xl:col-span-1 xl:mx-0 xl:max-w-none'
+                  : '',
+              ),
+            )}
+          </div>
         </div>
 
-        {/*
-          IMPORTANTE:
-          desde el ancho más angosto mostramos dos columnas.
-          En escritorio pasan a cuatro.
-        */}
-        <div className="mt-7 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
-          {plans.map((plan, index) => (
-            <Reveal
-              key={plan.name}
-              delay={(index % 4) * 35}
-            >
-              <article
-                className={`relative flex h-full min-w-0 flex-col rounded-[18px] border p-3.5 sm:rounded-[20px] sm:p-4 lg:p-5 ${
-                  plan.featured
-                    ? 'border-aster-green bg-aster-greenSoft/55 shadow-card'
-                    : 'border-aster-green/15 bg-[#f8fbf4]'
-                }`}
-              >
-                {plan.badge && (
-                  <span
-                    className={`inline-flex w-fit max-w-full items-center gap-1 rounded-full px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.09em] sm:text-[10px] ${
-                      plan.featured
-                        ? 'bg-aster-green text-white'
-                        : 'bg-aster-green text-white'
-                    }`}
-                  >
-                    {plan.featured && <Sparkles size={10} />}
-                    {plan.badge}
-                  </span>
-                )}
+        <Reveal delay={200}>
+          <div className="mx-auto mt-10 max-w-2xl text-center">
+            <p className="text-sm leading-relaxed text-aster-gray">
+              Todos los valores publicados incluyen IVA.
+            </p>
 
-                <h3 className="mt-3 break-words text-lg font-extrabold leading-tight text-aster-black sm:text-xl lg:text-[1.45rem]">
-                  {plan.name}
-                </h3>
-
-                <p className="mt-2 text-[11px] leading-relaxed text-aster-gray sm:text-xs lg:text-sm">
-                  {plan.description}
-                </p>
-
-                <div className="mt-3 rounded-[14px] bg-white p-3 sm:p-3.5">
-                  <p className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-aster-green sm:text-[10px]">
-                    Resumen
-                  </p>
-
-                  <p className="mt-1.5 break-words text-lg font-extrabold leading-tight text-aster-black sm:text-xl lg:text-[1.45rem]">
-                    {plan.price}
-                  </p>
-
-                  {plan.note && (
-                    <p className="mt-1.5 text-[10px] leading-snug text-aster-gray sm:text-[11px]">
-                      {plan.note}
-                    </p>
-                  )}
-
-                  <ul className="mt-3 space-y-1.5">
-                    {plan.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-start gap-1.5 text-[10px] font-medium leading-snug text-aster-black sm:text-[11px] lg:text-xs"
-                      >
-                        <CheckCircle2
-                          size={13}
-                          className="mt-px shrink-0 text-aster-green"
-                        />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a
-                  href="#contacto"
-                  className={`mt-3 inline-flex w-full items-center justify-center rounded-full px-3 py-2.5 text-center text-[10px] font-bold transition-colors sm:text-xs ${
-                    plan.featured
-                      ? 'bg-aster-green text-white hover:bg-aster-greenDark'
-                      : 'border border-aster-green/25 bg-white text-aster-green hover:bg-aster-greenSoft'
-                  }`}
-                >
-                  Conocer más
-                </a>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+            <p className="mt-1 text-xs leading-relaxed text-aster-gray/70">
+              Equipamiento, inventario inicial,
+              configuraciones especiales o servicios
+              fuera del alcance indicado pueden
+              cotizarse según las necesidades de cada
+              negocio.
+            </p>
+          </div>
+        </Reveal>
       </Container>
+
+      {activePlan && (
+        <PlanModal
+          plan={activePlan}
+          onClose={() =>
+            setActivePlan(null)
+          }
+        />
+      )}
     </section>
   );
 }
