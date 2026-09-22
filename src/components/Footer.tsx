@@ -240,14 +240,14 @@ export default function Footer() {
           <div className="flex flex-col gap-3 border-t border-gray-100 pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-5">
             <a
               href="/privacidad"
-              className="text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+              className="text-[11px] font-semibold text-aster-gray transition-colors hover:text-aster-green"
             >
               Política de privacidad
             </a>
 
             <a
               href="/cookies"
-              className="text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+              className="text-[11px] font-semibold text-aster-gray transition-colors hover:text-aster-green"
             >
               Política de cookies
             </a>
@@ -261,7 +261,7 @@ export default function Footer() {
                   ),
                 )
               }
-              className="text-left text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+              className="text-left text-[11px] font-semibold text-aster-gray transition-colors hover:text-aster-green"
             >
               Configurar cookies
             </button>
@@ -270,9 +270,9 @@ export default function Footer() {
               href={
                 contactEmailHref
               }
-              className="inline-flex items-center gap-2 text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+              className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-aster-gray transition-colors hover:text-aster-green"
             >
-              <Mail size={16} />
+              <Mail size={13} />
               {contactEmail}
             </a>
 
@@ -282,10 +282,10 @@ export default function Footer() {
               }
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+              className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-aster-gray transition-colors hover:text-aster-green"
               aria-label="Instagram de Aster"
             >
-              <Instagram size={17} />
+              <Instagram size={13} />
               @aster.asesorias
             </a>
           </div>
