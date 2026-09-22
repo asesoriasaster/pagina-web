@@ -14,6 +14,7 @@ import Postventa from '@/components/Postventa';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CookieConsent from '@/components/CookieConsent';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           Vista previa local · Formularios y acceso sin conexión
         </div>
       )}
+      <CookieConsent />
     </div>
   );
 }
