@@ -74,6 +74,11 @@ export default function Contact() {
   const [submitError, setSubmitError] =
     useState('');
 
+  const [
+    privacyAccepted,
+    setPrivacyAccepted,
+  ] = useState(false);
+
   const [form, setForm] =
     useState<FormState>(initialForm);
 
@@ -116,6 +121,11 @@ export default function Contact() {
     if (!form.mejorar.trim()) {
       nextErrors.mejorar =
         'Cuéntanos qué necesitas mejorar';
+    }
+
+    if (!privacyAccepted) {
+      nextErrors.privacyConsent =
+        'Debes autorizar el tratamiento de tus datos para enviar la consulta';
     }
 
     return nextErrors;
@@ -221,6 +231,7 @@ export default function Contact() {
     setForm(initialForm);
     setErrors({});
     setSubmitError('');
+    setPrivacyAccepted(false);
     setSubmitted(false);
   };
 
@@ -634,6 +645,51 @@ export default function Contact() {
                     {submitError}
                   </div>
                 )}
+
+                <div className="mt-5 rounded-2xl border border-gray-200 bg-white p-4">
+                  <label className="flex cursor-pointer items-start gap-3">
+                    <input
+                      type="checkbox"
+                      name="privacyConsent"
+                      value="accepted"
+                      checked={privacyAccepted}
+                      onChange={(event) => {
+                        setPrivacyAccepted(
+                          event.target.checked,
+                        );
+
+                        if (
+                          errors.privacyConsent
+                        ) {
+                          setErrors((previous) => ({
+                            ...previous,
+                            privacyConsent: '',
+                          }));
+                        }
+                      }}
+                      className="mt-0.5 h-5 w-5 shrink-0 accent-aster-green"
+                    />
+
+                    <span className="text-sm leading-relaxed text-aster-gray">
+                      He leído la{' '}
+                      <a
+                        href="/privacidad"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-semibold text-aster-green hover:underline"
+                      >
+                        Política de Privacidad
+                      </a>{' '}
+                      y autorizo a ASTER SpA a tratar los datos que entrego para responder mi consulta y gestionar una eventual relación comercial.
+                    </span>
+                  </label>
+
+                  {errors.privacyConsent && (
+                    <p className="mt-2 text-xs font-medium text-aster-red">
+                      {errors.privacyConsent}
+                    </p>
+                  )}
+                </div>
 
                 <button
                   type="submit"

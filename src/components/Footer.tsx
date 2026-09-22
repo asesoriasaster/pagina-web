@@ -238,6 +238,20 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3 border-t border-gray-100 pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-5">
+            <a
+              href="/privacidad"
+              className="text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+            >
+              Política de privacidad
+            </a>
+
+            <a
+              href="/cookies"
+              className="text-sm font-semibold text-aster-gray transition-colors hover:text-aster-green"
+            >
+              Política de cookies
+            </a>
+
             <button
               type="button"
               onClick={() =>
