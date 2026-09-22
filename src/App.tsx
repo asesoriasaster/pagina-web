@@ -15,8 +15,31 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import CookiePolicy from '@/pages/CookiePolicy';
 
 function App() {
+  const pathname =
+    window.location.pathname.replace(/\/+$/, '') || '/';
+
+  if (pathname === '/privacidad') {
+    return (
+      <>
+        <PrivacyPolicy />
+        <CookieConsent />
+      </>
+    );
+  }
+
+  if (pathname === '/cookies') {
+    return (
+      <>
+        <CookiePolicy />
+        <CookieConsent />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
