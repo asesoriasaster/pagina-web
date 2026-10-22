@@ -47,7 +47,7 @@ export default function PaginasWeb() {
           </p>
 
           <h2 className="mt-2 text-[clamp(1.85rem,3.7vw,3.25rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-aster-black">
-            Servicios para complementar Aster.
+            Servicios para complementar Aster
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-aster-gray sm:text-base">
