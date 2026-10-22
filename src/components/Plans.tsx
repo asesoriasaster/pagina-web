@@ -253,7 +253,7 @@ export default function Plans() {
     >
       <Container>
         <SectionHeading
-          title="Elige el nivel de Aster que necesita tu negocio."
+          title="Elige el nivel de Aster que necesita tu negocio"
         />
 
         <div className="mt-16 grid items-start gap-6 xl:grid-cols-[2fr_3fr] xl:gap-5">

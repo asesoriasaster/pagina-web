@@ -15,7 +15,7 @@ export default function AppModules() {
       <Container>
         <SectionHeading
           eyebrow="ASTER App"
-          title="Todo lo esencial, en un solo lugar."
+          title="Todo lo esencial, en un solo lugar"
           subtitle="Ventas, inventario y gestión conectados para decidir con claridad."
         />
         <Reveal delay={100}>

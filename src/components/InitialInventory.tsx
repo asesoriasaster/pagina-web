@@ -21,7 +21,7 @@ export default function InitialInventory() {
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <h2 className="text-3xl sm:text-4xl font-extrabold leading-[1.15] tracking-tight text-aster-black">
-              Nosotros podemos hacer el trabajo pesado.
+              Nosotros podemos hacer el trabajo pesado
             </h2>
             <p className="mt-5 text-base sm:text-lg text-aster-gray leading-relaxed">
               Aster puede realizar físicamente el levantamiento inicial del inventario para que el sistema comience con información confiable.

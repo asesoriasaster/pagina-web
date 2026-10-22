@@ -45,7 +45,7 @@ export default function SmartAlerts() {
               </p>
 
               <h2 className="mt-4 text-[clamp(2rem,4.8vw,4rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-aster-black">
-                No tienes que revisar todo para saber qué necesita tu atención.
+                No tienes que revisar todo para saber qué necesita tu atención
               </h2>
             </div>
           </Reveal>

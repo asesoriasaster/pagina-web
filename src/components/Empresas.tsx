@@ -34,7 +34,7 @@ export default function Empresas() {
     <section id="empresas" className="py-24 sm:py-28 bg-aster-soft">
       <Container>
         <SectionHeading
-          title="Soluciones diseñadas alrededor de tu operación."
+          title="Soluciones diseñadas alrededor de tu operación"
           subtitle="Para organizaciones de mayor complejidad, Aster diagnostica problemas y diseña soluciones administrativas, comerciales, estratégicas y tecnológicas adaptadas a cada realidad."
         />
 
