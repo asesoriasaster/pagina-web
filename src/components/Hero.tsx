@@ -35,7 +35,7 @@ export default function Hero() {
             <h1 className="mt-6 max-w-4xl text-[clamp(2.35rem,5vw,4.15rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-aster-black">
               Información para decidir.
               <span className="block">
-                Libertad para avanzar.
+                Libertad para avanzar
               </span>
             </h1>
 
