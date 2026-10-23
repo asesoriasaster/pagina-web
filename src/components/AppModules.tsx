@@ -132,10 +132,8 @@ export default function AppModules() {
                 web, conectada a una base de datos centralizada.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-aster-gray">
-                Sus módulos trabajan de manera integrada: una venta puede
-                actualizar el inventario, registrar movimientos y alimentar
-                los indicadores del negocio, evitando duplicar tareas y
-                facilitando el seguimiento de cada operación.
+                Sus módulos trabajan de manera integrada, evitando duplicar
+                tareas y facilitando el seguimiento de cada operación.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-aster-gray">
                 Su arquitectura permite incorporar nuevas funcionalidades
