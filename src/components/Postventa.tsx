@@ -31,7 +31,7 @@ export default function Postventa() {
             </p>
 
             <h2 className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-aster-black">
-              Implementamos, acompañamos y respondemos.
+              Implementamos, acompañamos y respondemos
             </h2>
 
             <p className="mt-5 max-w-5xl text-base leading-relaxed text-aster-gray sm:text-lg lg:text-[1.65rem] lg:leading-relaxed">

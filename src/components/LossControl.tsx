@@ -19,7 +19,7 @@ export default function LossControl() {
 
           <Reveal delay={60}>
             <h2 className="mt-7 max-w-5xl text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.035em] text-aster-black">
-              Las pérdidas pequeñas también se acumulan.
+              Las pérdidas pequeñas también se acumulan
             </h2>
           </Reveal>
 
@@ -45,7 +45,7 @@ export default function LossControl() {
 
               <div className="min-w-0">
                 <h3 className="text-xl font-extrabold leading-tight text-aster-black sm:text-2xl">
-                  Más trazabilidad. Menos espacios ciegos.
+                  Más trazabilidad. Menos espacios ciegos
                 </h3>
 
                 <p className="mt-2 max-w-4xl text-sm leading-relaxed text-aster-gray sm:text-base">

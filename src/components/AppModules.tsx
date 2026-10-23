@@ -15,7 +15,7 @@ export default function AppModules() {
       <Container>
         <SectionHeading
           eyebrow="ASTER App"
-          title="Todo lo esencial, en un solo lugar."
+          title="Todo lo esencial, en un solo lugar"
           subtitle="Ventas, inventario y gestión conectados para decidir con claridad."
         />
         <Reveal delay={100}>
@@ -64,6 +64,89 @@ export default function AppModules() {
             </div>
           </div>
         </Reveal>
+        {/* Información adicional de ASTER App */}
+        <div className="mt-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-aster-green">
+              Más que una aplicación
+            </p>
+            <h3 className="mt-3 text-2xl font-extrabold text-aster-black sm:text-3xl">
+              Información que acompaña tu operación
+            </h3>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+
+            <article className="rounded-2xl border border-gray-200 bg-aster-soft p-6">
+              <span className="text-sm font-extrabold text-aster-green">
+                01 / ACCESIBILIDAD
+              </span>
+              <h4 className="mt-4 text-xl font-extrabold text-aster-black">
+                Tu negocio, desde cualquier dispositivo
+              </h4>
+              <p className="mt-4 text-sm leading-relaxed text-aster-gray">
+                Utiliza ASTER App desde tu celular, tablet o computador,
+                sin instalaciones complicadas ni equipos especializados.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-aster-gray">
+                ¿Necesitas un punto de venta fijo? Solo necesitas un
+                computador convencional, una tablet o un tótem compatible,
+                un navegador actualizado y conexión a internet.
+              </p>
+              <p className="mt-5 text-sm font-bold text-aster-green">
+                Menos inversión en tecnología. Más libertad para gestionar tu negocio.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-gray-200 bg-aster-soft p-6">
+              <span className="text-sm font-extrabold text-aster-green">
+                02 / PRIVACIDAD
+              </span>
+              <h4 className="mt-4 text-xl font-extrabold text-aster-black">
+                Tu información, protegida y bajo control
+              </h4>
+              <p className="mt-4 text-sm leading-relaxed text-aster-gray">
+                Sabemos que detrás de cada negocio existe información
+                valiosa: ventas, compras, inventarios, recetas,
+                fichas de clientes y procesos internos.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-aster-gray">
+                ASTER App está diseñada para gestionar esta información
+                mediante accesos personalizados, permisos de usuario
+                y separación de los datos de cada empresa.
+              </p>
+              <p className="mt-5 text-sm font-bold text-aster-green">
+                Tu información es parte de tu negocio. Protegerla es parte de nuestro compromiso.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-gray-200 bg-aster-soft p-6">
+              <span className="text-sm font-extrabold text-aster-green">
+                03 / TECNOLOGÍA
+              </span>
+              <h4 className="mt-4 text-xl font-extrabold text-aster-black">
+                Una plataforma. Toda tu operación conectada
+              </h4>
+              <p className="mt-4 text-sm leading-relaxed text-aster-gray">
+                ASTER App es una plataforma de gestión basada en tecnología
+                web, conectada a una base de datos centralizada.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-aster-gray">
+                Sus módulos trabajan de manera integrada, evitando duplicar
+                tareas y facilitando el seguimiento de cada operación.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-aster-gray">
+                Su arquitectura permite incorporar nuevas funcionalidades
+                y conectar herramientas externas según las necesidades
+                de tu empresa.
+              </p>
+              <p className="mt-5 text-sm font-bold text-aster-green">
+                La tecnología trabaja detrás. Tú te concentras en hacer crecer tu negocio.
+              </p>
+            </article>
+
+          </div>
+        </div>
       </Container>
     </section>
   );
